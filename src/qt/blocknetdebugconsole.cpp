@@ -625,7 +625,7 @@ void BlocknetDebugConsole::clear(bool clearHistory) {
     messagesWidget->document()->setDefaultStyleSheet(
         QString(
                 "table { }"
-                "td.time { color: #6F8097; font-size: %2; padding-top: 3px; } "
+                "td.time { color: #FFF; font-size: %2; padding-top: 3px; } "
                 "td.message { font-family: %1; font-size: %2; white-space:pre-wrap; } "
                 "td.cmd-request { color: #4BF5C6; } "
                 "td.cmd-error { color: #FF7F71; } "

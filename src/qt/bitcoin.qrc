@@ -153,7 +153,7 @@
         <file alias="RobotoMono-Regular.ttf">res/redesign/fonts/RobotoMono/RobotoMono-Regular.ttf</file>
         <file alias="RobotoMono-Thin.ttf">res/redesign/fonts/RobotoMono/RobotoMono-Thin.ttf</file>
         <file alias="RobotoMono-ThinItalic.ttf">res/redesign/fonts/RobotoMono/RobotoMono-ThinItalic.ttf</file>
-        <file alias="white_scalaris_logo.png">res/redesign/white_scalaris_logo.png</file>
+        <file alias="scalaris_logo.png">res/redesign/scalaris_logo.png</file>
         <file alias="images/ScalarisSplash">res/redesign/ScalarisSplash.png</file>
         <file alias="css/default">res/redesign/css/stylesheet.qss</file>
     </qresource>

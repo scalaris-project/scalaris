@@ -107,9 +107,9 @@ struct Params {
     int proposalCutoff; // blocks prior to superblock
     int governanceBlock{1}; // block number indicating when governance system was enabled
     CAmount proposalMinAmount{10 * COIN};
-    CAmount proposalMaxAmount{40000 * COIN};
+    CAmount proposalMaxAmount{30000 * COIN};
     CAmount proposalFee{10 * COIN};
-    CAmount voteBalance{5000 * COIN};
+    CAmount voteBalance{2500 * COIN};
     CAmount voteMinUtxoAmount{100 * COIN};
     /** Fallback fee **/
     CFeeRate defaultFallbackFee;

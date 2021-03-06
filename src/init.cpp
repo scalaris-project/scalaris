@@ -596,7 +596,7 @@ std::string LicenseInfo()
     const std::string URL_WEBSITE = "<https://scalaris.info>";
     const std::string copyrightText = "Copyright (c) 2009-2019 The Bitcoin Core developers\n"
                                       "Copyright (c) 2014-2020 The Blocknet developers\n"
-									  "Copyright (c) 2014-2020 The Scalaris developers";
+									  "Copyright (c) 2020-2021 The Scalaris developers";
 
     return copyrightText + "\n" +
            "\n" +
@@ -1479,7 +1479,7 @@ bool AppInitMain(InitInterfaces& interfaces)
     // see Step 2: parameter interactions for more information about these
     fListen = gArgs.GetBoolArg("-listen", DEFAULT_LISTEN);
     fDiscover = gArgs.GetBoolArg("-discover", true);
-    g_relay_txes = !gArgs.GetBoolArg("-blocksonly", DEFAULT_BLOCKSONLY);
+    fRelayTxes = !gArgs.GetBoolArg("-blocksonly", DEFAULT_BLOCKSONLY);
 
     for (const std::string& strAddr : gArgs.GetArgs("-externalip")) {
         CService addrLocal;

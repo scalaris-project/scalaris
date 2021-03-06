@@ -56,8 +56,8 @@ RUN echo "datadir=/opt/blockchain/data    \n\
                                           \n\
 maxmempoolxbridge=128                     \n\
                                           \n\
-port=41412    # testnet: 41474            \n\
-rpcport=41414 # testnet: 41419            \n\
+port=42500    # testnet: 41474            \n\
+rpcport=42510 # testnet: 41419            \n\
                                           \n\
 server=1                                  \n\
 logtimestamps=1                           \n\
@@ -72,6 +72,6 @@ WORKDIR /opt/blockchain/
 VOLUME ["/opt/blockchain/config", "/opt/blockchain/data"]
 
 # Port, RPC, Test Port, Test RPC
-EXPOSE 41412 41414 41474 41419
+EXPOSE 42500 42510 41474 41419
 
 CMD ["scalarisd", "-daemon=0", "-server=0"]

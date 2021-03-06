@@ -348,7 +348,7 @@ RES_ICONS = \
 
 # Blocknet qt resources
 RES_ICONS += \
-  qt/res/redesign/BlocknetSplash.png \
+  qt/res/redesign/ScalarisSplash.png \
   qt/res/redesign/fonts/Roboto/Roboto-Black.ttf \
   qt/res/redesign/fonts/Roboto/Roboto-BlackItalic.ttf \
   qt/res/redesign/fonts/Roboto/Roboto-Bold.ttf \
@@ -408,7 +408,7 @@ RES_ICONS += \
   qt/res/redesign/icons/UtilityBar/StakingNodeIconActive.png \
   qt/res/redesign/icons/UtilityBar/StakingNodeIconInactive.png \
   qt/res/redesign/icons/UtilityBar/UnlockedIcon.png \
-  qt/res/redesign/white_scalaris_logo.png \
+  qt/res/redesign/scalaris_logo.png \
   qt/res/redesign/css/stylesheet.qss
 
 BITCOIN_QT_BASE_CPP = \

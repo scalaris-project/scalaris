@@ -1078,7 +1078,7 @@ UniValue dxTakeOrder(const JSONRPCRequest& request) {
             RPCHelpMan{"dxTakeOrder",
                 "\nThis call is used to take an order. You can only take orders for assets supported "
                 "by your node (view with dxGetLocalTokens). Taking your own order is not supported. "
-                "Taking an order has a 0.015 SCA fee.\n"
+                "Taking an order has a 0.01 SCA fee.\n"
                 "\nNote:\n"
                 "XBridge will first attempt to use funds from the specified from_address. "
                 "If this address does not have sufficient funds to cover the order, then "

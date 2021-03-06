@@ -116,7 +116,7 @@ public:
         , blockTime(0)
         , blockSize(1024)
         , requiredConfirmations(0)
-        , serviceNodeFee(.015)
+        , serviceNodeFee(.01)
         , txWithTimeField(false)
         , isLockCoinsSupported(false)
     {

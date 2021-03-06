@@ -55,4 +55,4 @@ RUN mkdir -p $DISTDIR \
 WORKDIR /opt/scalaris-project/dist
 
 # Port, RPC, Test Port, Test RPC
-EXPOSE 41412 41414 41474 41419
+EXPOSE 42500 42510 41474 41419

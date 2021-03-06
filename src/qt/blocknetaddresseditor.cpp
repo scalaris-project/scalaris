@@ -87,7 +87,7 @@ void BlocknetAddressEditor::addAddress(QString addr) {
     // draw background
     QPainterPath p1;
     p1.addRoundedRect(sx, sy, bgw, bgh, r, r);
-    p.fillPath(p1, QColor(0x17, 0x2F, 0x49, 255));
+    p.fillPath(p1, QColor(0, 0, 0, 76));
 
     // draw circle
     QPainterPath p2;

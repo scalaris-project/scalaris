@@ -1,48 +1,55 @@
 Scalaris
 =====================================
 
-[![Build Status](https://travis-ci.org/scalaris-project/scalaris.svg?branch=4.0.0)](https://travis-ci.org/scalaris-project/scalaris)
-
 https://scalaris.info
 
 Welcome to the Scalaris repository. This repo is for the Scalaris Protocol, a 2nd layer blockchain interoperability protocol that enables communication, interaction, and exchange between different blockchains. This allows for the development of multi-chain applications and blockchain microservices, creating exponentially more capabilities and possibilities for the blockchain ecosystem.
 
 [Contributors are welcome!](https://github.com/scalaris-project/scalaris/blob/master/CONTRIBUTING.md)
 
-[Website](https://scalaris.info) | [API](https://api.scalaris.info) | [Documentation](https://docs.scalaris.info) | [Discord](https://discord.gg/2e6s7H8)
+[Website](https://scalaris.info) | [API](https://api.scalaris.info) | [Documentation](https://docs.scalaris.info) | [Discord](https://discord.gg/HKbdGANbZA) | [Telegram] (https://t.me/scalaris_project)
 -------------|-------------|-------------|-------------
 
 Scalaris
 -------
 
-Started in 2014, [Scalaris](https://docs.scalaris.info/project/introduction) is a decentralized, community-governed, self-funded, open-source project that serves as a connector between different blockchains, markets, and communities. 
+Started in 2021, [Scalaris](https://docs.scalaris.info/project/introduction) is a decentralized, community-governed, self-funded, open-source project that serves as a connector between different blockchains, markets, and communities. 
 
 The Scalaris Protocol
 -------
 
-The Scalaris Protocol enables decentralized communication and exchange between different blockchains in a permissionless and trustless manner through the use of the TCP/IP networking layer for communication, P2P atomic swaps using BIP65 for exchange, and a DHT overlay network ([Service Nodes](https://docs.scalaris.info/service-nodes/introduction)) to host the full nodes of compatible blockchains, host microservices, audit interactions, and perform anti-spam and anti-DOS measures for the network. 
+Bassed  at the [Blocknet Protocol](https://github.com/blocknetdx) enables decentralized communication and exchange between different blockchains in a permissionless and trustless manner through the use of the TCP/IP networking layer for communication, P2P atomic swaps using BIP65 for exchange, and a DHT overlay network ([Service Nodes](https://docs.scalaris.info/service-nodes/introduction)) to host the full nodes of compatible blockchains, host microservices, audit interactions, and perform anti-spam and anti-DOS measures for the network. 
 
-Block DX
+Scalaris DX
 -------
 
-[Block DX](https://docs.scalaris.info/blockdx/introduction) is a completely decentralized and trustless exchange built on the Scalaris Protocol that mimics a centralized exchange experience and enables traders to conduct exchanges directly from the wallets of the coins being traded. View Repo: [https://github.com/scalaris-project/block-dx]
+[Scalaris DX](https://docs.scalaris.info/scalarisdx/introduction) is a completely decentralized and trustless exchange built on the Blocknet Protocol that mimics a centralized exchange experience and enables traders to conduct exchanges directly from the wallets of the coins being traded. View Repo: [https://github.com/scalaris-project/scalaris-dx]
 
 Scalaris Specifications:
 -------
 
-| BLOCK Detail          |                    |
+| Scalaris Detail          |                    |
 ------------------------|--------------------
-Creation Date           | October 20th, 2014
-Release Method          | ITO, No Premine
-Proof Type              | Proof of Stake (PoS)
+Creation Date           | March 5th, 2021
+Release Method          | ITO, AirDrops , PoW at start.
+Proof Type              | Proof of Work (PoW): blocks 0-5000, Proof of Stake (PoS): blocks 5001+
 Algo                    | Quark
 Block Time              | 60 seconds
-Block Reward / Fees     | 1.0 BLOCK awarded to stakers <br>0.015 BLOCK awarded to Service Nodes on DX trades <br>XRouter fees awarded to Service Nodes (customizable)
-Superblock              | Up to 40,000 BLOCK
+Block Reward / Fees     | 1.0 BLOCK awarded to stakers <br>0.01 BLOCK awarded to Service Nodes on DX trades <br>XRouter fees awarded to Service Nodes (customizable)
+Superblock              | Up to 30,000 BLOCK
 Difficulty              | Adjusted per block
-Staking Requirement     | No minimum
-Service Node Requirement| 5000 BLOCK (SPV)
-Circulation             | [View on explorer](https://chainz.cryptoid.info/block/)
+Staking Requirement     | No minimum ( but realy you most have at least 1 SCA , more = better)
+Service Node Requirement| 2500 SCA (SPV)
+Service Node Reward     | xBridge fixed 0.01 SCA (Taker side) , for xRoute and xCloud can be configurated or even use 0 fee at all.
+Deffault P2P Port	    | 42500
+Deffault RPC Port	    | 42510
+P2SH Prefix	            | S ( 63 )
+SCRIPT Prefix	        | A ( 23 )
+SuperBlock Period	    | Every 42000 blocks.
+Maturity Time	        | 100 +1 blocks.
+Stack Min Age	        | 3600
+Vote Require Min Ammount| 2500 SCA + 1 extra fee by separate input's.
+Circulation             | [View on explorer](https://explorer.scalaris.info/)
 Max Supply              | No maximum supply (PoS), but there is a maximum to [inflation](https://docs.scalaris.info/blockchain/introduction/#inflation)
 
 
@@ -73,7 +80,7 @@ information or see https://opensource.org/licenses/MIT.
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2020 The Scalaris Developers
+Copyright (c) 2020-2021 The Scalaris Developers
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

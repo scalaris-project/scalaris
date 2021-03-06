@@ -78,7 +78,7 @@ public:
     /**
      * Default collateral for SPV servicenodes.
      */
-    static const CAmount COLLATERAL_SPV = 5000 * COIN;
+    static const CAmount COLLATERAL_SPV = 2500 * COIN;
     /**
      * Grace period in blocks for invalid servicenode collateral.
      */

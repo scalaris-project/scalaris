@@ -753,8 +753,8 @@ bool createConf(const boost::filesystem::path & confDir, const bool & skipPlugin
                      "host="                                                                                             + eol +
                      ""                                                                                                  + eol +
                      "#! port is the tcpip port on the host that accepts xrouter connections."                           + eol +
-                     "#! port will default to the default blockchain port (e.g. 41412), examples:"                       + eol +
-                     "#! port=41412"                                                                                     + eol +
+                     "#! port will default to the default blockchain port (e.g. 42500), examples:"                       + eol +
+                     "#! port=42500"                                                                                     + eol +
                      "#! port=80"                                                                                        + eol +
                      "#! port=8080"                                                                                      + eol +
                      ""                                                                                                  + eol +

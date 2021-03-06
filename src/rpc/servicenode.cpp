@@ -276,7 +276,7 @@ static UniValue servicenoderemove(const JSONRPCRequest& request)
 static UniValue servicenodecreateinputs(const JSONRPCRequest& request)
 {
     const auto smallestInputSize = static_cast<int>(sn::ServiceNode::COLLATERAL_SPV/COIN/Params().GetConsensus().snMaxCollateralCount);
-    const int defaultInputSize{1250};
+    const int defaultInputSize{500};
     if (request.fHelp || request.params.empty() || request.params.size() > 3)
         throw std::runtime_error(
             RPCHelpMan{"servicenodecreateinputs",
