@@ -49,8 +49,8 @@ endif
 
 LIBBITCOIN_CRYPTO= $(LIBBITCOIN_CRYPTO_BASE)
 # Blocknet crypto lib
-LIBBITCOIN_CRYPTO_BLOCKNET = crypto/libbitcoin_crypto_blocknet.a
-LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_BLOCKNET)
+LIBBITCOIN_CRYPTO_SCALARIS = crypto/libbitcoin_crypto_scalaris.a
+LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_SCALARIS)
 if ENABLE_SSE41
 LIBBITCOIN_CRYPTO_SSE41 = crypto/libbitcoin_crypto_sse41.a
 LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_SSE41)
@@ -96,18 +96,18 @@ TESTS =
 BENCHMARKS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += blocknetd
+  bin_PROGRAMS += scalarisd
 endif
 
 if BUILD_BITCOIN_CLI
-  bin_PROGRAMS += blocknet-cli
+  bin_PROGRAMS += scalaris-cli
 endif
 if BUILD_BITCOIN_TX
-  bin_PROGRAMS += blocknet-tx
+  bin_PROGRAMS += scalaris-tx
 endif
 if ENABLE_WALLET
 if BUILD_BITCOIN_WALLET
-  bin_PROGRAMS += blocknet-wallet
+  bin_PROGRAMS += scalaris-wallet
 endif
 endif
 
@@ -463,10 +463,10 @@ crypto_libbitcoin_crypto_base_a_SOURCES = \
   crypto/siphash.cpp
 
 # Blocknet crypto library
-crypto_libbitcoin_crypto_blocknet_a_CFLAGS = -fPIC
-crypto_libbitcoin_crypto_blocknet_a_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libbitcoin_crypto_blocknet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-crypto_libbitcoin_crypto_blocknet_a_SOURCES = \
+crypto_libbitcoin_crypto_scalaris_a_CFLAGS = -fPIC
+crypto_libbitcoin_crypto_scalaris_a_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libbitcoin_crypto_scalaris_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+crypto_libbitcoin_crypto_scalaris_a_SOURCES = \
   crypto/siphash.h \
   crypto/blake.c \
   crypto/sph_blake.h \
@@ -679,16 +679,16 @@ nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
 # bitcoind binary #
-blocknetd_SOURCES = bitcoind.cpp
-blocknetd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-blocknetd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-blocknetd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+scalarisd_SOURCES = bitcoind.cpp
+scalarisd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+scalarisd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+scalarisd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-blocknetd_SOURCES += bitcoind-res.rc
+scalarisd_SOURCES += bitcoind-res.rc
 endif
 
-blocknetd_LDADD = \
+scalarisd_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_WALLET) \
   $(LIBBITCOIN_SERVER) \
@@ -704,43 +704,43 @@ blocknetd_LDADD = \
   $(LIBSECP256K1)
 
 # Blocknet XBridge
-blocknetd_LDADD += $(LIBXBRIDGE)
+scalarisd_LDADD += $(LIBXBRIDGE)
 
 # Blocknet XRouter
-blocknetd_LDADD += $(LIBXROUTER)
+scalarisd_LDADD += $(LIBXROUTER)
 
-blocknetd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(SSL_LIBS) $(ZMQ_LIBS)
+scalarisd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(SSL_LIBS) $(ZMQ_LIBS)
 
 # bitcoin-cli binary #
-blocknet_cli_SOURCES = bitcoin-cli.cpp
-blocknet_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-blocknet_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-blocknet_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+scalaris_cli_SOURCES = bitcoin-cli.cpp
+scalaris_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+scalaris_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+scalaris_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-blocknet_cli_SOURCES += bitcoin-cli-res.rc
+scalaris_cli_SOURCES += bitcoin-cli-res.rc
 endif
 
-blocknet_cli_LDADD = \
+scalaris_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_CRYPTO)
 
-blocknet_cli_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+scalaris_cli_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
 # bitcoin-tx binary #
-blocknet_tx_SOURCES = bitcoin-tx.cpp
-blocknet_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-blocknet_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-blocknet_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+scalaris_tx_SOURCES = bitcoin-tx.cpp
+scalaris_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+scalaris_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+scalaris_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-blocknet_tx_SOURCES += bitcoin-tx-res.rc
+scalaris_tx_SOURCES += bitcoin-tx-res.rc
 endif
 
-blocknet_tx_LDADD = \
+scalaris_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
@@ -748,20 +748,20 @@ blocknet_tx_LDADD = \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-blocknet_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+scalaris_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
 # bitcoin-wallet binary #
-blocknet_wallet_SOURCES = bitcoin-wallet.cpp
-blocknet_wallet_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-blocknet_wallet_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-blocknet_wallet_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+scalaris_wallet_SOURCES = bitcoin-wallet.cpp
+scalaris_wallet_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+scalaris_wallet_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+scalaris_wallet_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-blocknet_wallet_SOURCES += bitcoin-wallet-res.rc
+scalaris_wallet_SOURCES += bitcoin-wallet-res.rc
 endif
 
-blocknet_wallet_LDADD = \
+scalaris_wallet_LDADD = \
   $(LIBBITCOIN_WALLET_TOOL) \
   $(LIBBITCOIN_WALLET) \
   $(LIBBITCOIN_SERVER) \
@@ -775,12 +775,12 @@ blocknet_wallet_LDADD = \
   $(LIBSECP256K1)
 
 # Blocknet XBridge
-blocknet_wallet_LDADD += $(LIBXBRIDGE)
+scalaris_wallet_LDADD += $(LIBXBRIDGE)
 
 # Blocknet XRouter
-blocknet_wallet_LDADD += $(LIBXROUTER) $(EVENT_LIBS) $(SSL_LIBS)
+scalaris_wallet_LDADD += $(LIBXROUTER) $(EVENT_LIBS) $(SSL_LIBS)
 
-blocknet_wallet_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
+scalaris_wallet_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
 #
 
 # bitcoinconsensus library #
@@ -788,7 +788,7 @@ if BUILD_BITCOIN_LIBS
 include_HEADERS = script/bitcoinconsensus.h
 libbitcoinconsensus_la_SOURCES = $(crypto_libbitcoin_crypto_base_a_SOURCES) $(libbitcoin_consensus_a_SOURCES)
 # Blocknet crypto library
-libbitcoinconsensus_la_SOURCES += $(crypto_libbitcoin_crypto_blocknet_a_SOURCES)
+libbitcoinconsensus_la_SOURCES += $(crypto_libbitcoin_crypto_scalaris_a_SOURCES)
 
 if GLIBC_BACK_COMPAT
   libbitcoinconsensus_la_SOURCES += compat/glibc_compat.cpp

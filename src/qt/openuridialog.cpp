@@ -15,7 +15,7 @@ OpenURIDialog::OpenURIDialog(QWidget *parent) :
     ui(new Ui::OpenURIDialog)
 {
     ui->setupUi(this);
-    ui->uriEdit->setPlaceholderText("blocknet:");
+    ui->uriEdit->setPlaceholderText("scalaris:");
 }
 
 OpenURIDialog::~OpenURIDialog()
@@ -46,5 +46,5 @@ void OpenURIDialog::on_selectFileButton_clicked()
     if(filename.isEmpty())
         return;
     QUrl fileUri = QUrl::fromLocalFile(filename);
-    ui->uriEdit->setText("blocknet:?r=" + QUrl::toPercentEncoding(fileUri.toString()));
+    ui->uriEdit->setText("scalaris:?r=" + QUrl::toPercentEncoding(fileUri.toString()));
 }

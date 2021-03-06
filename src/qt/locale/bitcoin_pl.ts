@@ -1454,8 +1454,8 @@
         <translation>Kwota</translation>
     </message>
     <message>
-        <source>Enter a Blocknet address (e.g. %1)</source>
-        <translation>Wprowadź adres blocknetowy (np. %1)</translation>
+        <source>Enter a Scalaris address (e.g. %1)</source>
+        <translation>Wprowadź adres scalarisowy (np. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>

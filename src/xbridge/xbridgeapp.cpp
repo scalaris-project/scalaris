@@ -323,13 +323,13 @@ bool App::createConf()
                 "ExchangeWallets="                                                             + eol +
                 "FullLog=true"                                                                 + eol +
                 "# Show all orders across the network regardless of whether wallets are "      + eol +
-                "# installed locally, set to \"true\". -dxnowallets in blocknet.conf "         + eol +
+                "# installed locally, set to \"true\". -dxnowallets in scalaris.conf "         + eol +
                 "# overrides this setting"                                                     + eol +
                 "ShowAllOrders=false"                                                          + eol +
                 ""                                                                             + eol +
                 "# Sample configuration:"                                                      + eol +
-                "# [BLOCK]"                                                                    + eol +
-                "# Title=Blocknet"                                                             + eol +
+                "# [SCA]"                                                                    + eol +
+                "# Title=Scalaris"                                                             + eol +
                 "# Address="                                                                   + eol +
                 "# Ip=127.0.0.1"                                                               + eol +
                 "# Port=41414"                                                                 + eol +
@@ -1157,7 +1157,7 @@ void App::updateActiveWallets()
                     // Asynchronously check connection
                     try {
                         tg.create_thread([&check, conn]() {
-                            RenameThread("blocknet-xbridgewalletcheck");
+                            RenameThread("scalaris-xbridgewalletcheck");
                             check(conn);
                         });
                     } catch (...) {
@@ -2166,7 +2166,7 @@ Error App::acceptXBridgeTransaction(const uint256 & id, const std::string & from
         std::vector<wallet::UtxoEntry> feeOutputs;
         if (!rpc::unspentP2PKH(feeOutputs)) {
             revertOrder(ptr);
-            xbridge::LogOrderMsg(id.GetHex(), "insufficient BLOCK funds for service node fee payment", __FUNCTION__);
+            xbridge::LogOrderMsg(id.GetHex(), "insufficient SCA funds for service node fee payment", __FUNCTION__);
             return xbridge::Error::INSIFFICIENT_FUNDS;
         }
 
@@ -2805,7 +2805,7 @@ void App::unlockCoins(const std::string & token, const std::vector<wallet::UtxoE
 //******************************************************************************
 bool App::canAffordFeePayment(const CAmount & fee) {
 #ifdef ENABLE_WALLET
-    const auto & lockedUtxos = getAllLockedUtxos("BLOCK");
+    const auto & lockedUtxos = getAllLockedUtxos("SCA");
     auto coins = availableCoins(true, 1); // at least 1-conf
 
     CAmount running{0};

@@ -244,7 +244,7 @@ UniValue dxGetLocalTokens(const JSONRPCRequest& request)
                 RPCResult{
                 R"(
     [
-        "BLOCK",
+        "SCA",
         "LTC",
         "MONA",
         "SYS"
@@ -288,7 +288,7 @@ UniValue dxGetNetworkTokens(const JSONRPCRequest& request)
                 RPCResult{
                 R"(
     [
-        "BLOCK",
+        "SCA",
         "BTC",
         "DGB",
         "LTC",
@@ -480,7 +480,7 @@ UniValue dxGetOrderFills(const JSONRPCRequest& request)
                 "This will only return orders that have been filled in your current session.\n",
                 {
                     {"maker", RPCArg::Type::STR, RPCArg::Optional::NO, "The symbol of the asset sold by the maker (e.g. LTC)."},
-                    {"taker", RPCArg::Type::STR, RPCArg::Optional::NO, "The symbol of the asset sold by the taker (e.g. BLOCK)."},
+                    {"taker", RPCArg::Type::STR, RPCArg::Optional::NO, "The symbol of the asset sold by the taker (e.g. SCA)."},
                     {"combined", RPCArg::Type::BOOL, "true", "If true, combines the results to return orders with the maker and taker as specified as well as orders of the inverse market. If false, only returns filled orders with the maker and taker assets as specified."},
                 },
                 RPCResult{
@@ -520,10 +520,10 @@ UniValue dxGetOrderFills(const JSONRPCRequest& request)
                 )"
                 },
                 RPCExamples{
-                    HelpExampleCli("dxGetOrderFills", "BLOCK LTC")
-                  + HelpExampleRpc("dxGetOrderFills", "\"BLOCK\", \"LTC\"")
-                  + HelpExampleCli("dxGetOrderFills", "BLOCK LTC true")
-                  + HelpExampleRpc("dxGetOrderFills", "\"BLOCK\", \"LTC\", true")
+                    HelpExampleCli("dxGetOrderFills", "SCA LTC")
+                  + HelpExampleRpc("dxGetOrderFills", "\"SCA\", \"LTC\"")
+                  + HelpExampleCli("dxGetOrderFills", "SCA LTC true")
+                  + HelpExampleRpc("dxGetOrderFills", "\"SCA\", \"LTC\", true")
                 },
             }.ToString());
     Value js; json_spirit::read_string(request.params.write(), js); Array params = js.get_array();
@@ -593,7 +593,7 @@ UniValue dxGetOrderHistory(const JSONRPCRequest& request)
                 "It can return the order history for any asset since all trade history is stored on-chain.\n",
                 {
                     {"maker", RPCArg::Type::STR, RPCArg::Optional::NO, "The symbol of the asset sold by the maker (e.g. LTC)."},
-                    {"taker", RPCArg::Type::STR, RPCArg::Optional::NO, "The symbol of the asset sold by the taker (e.g. BLOCK)."},
+                    {"taker", RPCArg::Type::STR, RPCArg::Optional::NO, "The symbol of the asset sold by the taker (e.g. SCA)."},
                     {"start_time", RPCArg::Type::NUM, RPCArg::Optional::NO, "The Unix time in seconds for the start time boundary to search."},
                     {"end_time", RPCArg::Type::NUM, RPCArg::Optional::NO, "The Unix time in seconds for the end time boundary to search."},
                     {"granularity", RPCArg::Type::NUM, RPCArg::Optional::NO, "Time interval slice in seconds. The slice options are: " + xQuery::supported_seconds_csv()},
@@ -829,7 +829,7 @@ UniValue dxMakeOrder(const JSONRPCRequest& request)
                     {"maker", RPCArg::Type::STR, RPCArg::Optional::NO, "The symbol of the asset being sold by the maker (e.g. LTC)."},
                     {"maker_size", RPCArg::Type::STR, RPCArg::Optional::NO, "The amount of the maker asset being sent."},
                     {"maker_address", RPCArg::Type::STR, RPCArg::Optional::NO, "The maker address containing asset being sent."},
-                    {"taker", RPCArg::Type::STR, RPCArg::Optional::NO, "The symbol of the asset being bought by the maker (e.g. BLOCK)."},
+                    {"taker", RPCArg::Type::STR, RPCArg::Optional::NO, "The symbol of the asset being bought by the maker (e.g. SCA)."},
                     {"taker_size", RPCArg::Type::STR, RPCArg::Optional::NO, "The amount of the taker asset to be received."},
                     {"taker_address", RPCArg::Type::STR, RPCArg::Optional::NO, "The taker address for the receiving asset."},
                     {"type", RPCArg::Type::STR, RPCArg::Optional::NO, "The order type. Options: exact"},
@@ -893,10 +893,10 @@ UniValue dxMakeOrder(const JSONRPCRequest& request)
                 )"
                 },
                 RPCExamples{
-                    HelpExampleCli("dxMakeOrder", "LTC 25 LLZ1pgb6Jqx8hu84fcr5WC5HMoKRUsRE8H BLOCK 1000 BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR exact")
-                  + HelpExampleRpc("dxMakeOrder", "\"LTC\", \"25\", \"LLZ1pgb6Jqx8hu84fcr5WC5HMoKRUsRE8H\", \"BLOCK\", \"1000\", \"BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR\", \"exact\"")
-                  + HelpExampleCli("dxMakeOrder", "LTC 25 LLZ1pgb6Jqx8hu84fcr5WC5HMoKRUsRE8H BLOCK 1000 BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR exact dryrun")
-                  + HelpExampleRpc("dxMakeOrder", "\"LTC\", \"25\", \"LLZ1pgb6Jqx8hu84fcr5WC5HMoKRUsRE8H\", \"BLOCK\", \"1000\", \"BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR\", \"exact\", \"dryrun\"")
+                    HelpExampleCli("dxMakeOrder", "LTC 25 LLZ1pgb6Jqx8hu84fcr5WC5HMoKRUsRE8H SCA 1000 BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR exact")
+                  + HelpExampleRpc("dxMakeOrder", "\"LTC\", \"25\", \"LLZ1pgb6Jqx8hu84fcr5WC5HMoKRUsRE8H\", \"SCA\", \"1000\", \"BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR\", \"exact\"")
+                  + HelpExampleCli("dxMakeOrder", "LTC 25 LLZ1pgb6Jqx8hu84fcr5WC5HMoKRUsRE8H SCA 1000 BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR exact dryrun")
+                  + HelpExampleRpc("dxMakeOrder", "\"LTC\", \"25\", \"LLZ1pgb6Jqx8hu84fcr5WC5HMoKRUsRE8H\", \"SCA\", \"1000\", \"BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR\", \"exact\", \"dryrun\"")
                 },
             }.ToString());
     Value js; json_spirit::read_string(request.params.write(), js); Array params = js.get_array();
@@ -1078,7 +1078,7 @@ UniValue dxTakeOrder(const JSONRPCRequest& request) {
             RPCHelpMan{"dxTakeOrder",
                 "\nThis call is used to take an order. You can only take orders for assets supported "
                 "by your node (view with dxGetLocalTokens). Taking your own order is not supported. "
-                "Taking an order has a 0.015 BLOCK fee.\n"
+                "Taking an order has a 0.015 SCA fee.\n"
                 "\nNote:\n"
                 "XBridge will first attempt to use funds from the specified from_address. "
                 "If this address does not have sufficient funds to cover the order, then "
@@ -1506,17 +1506,17 @@ UniValue dxGetOrderBook(const JSONRPCRequest& request)
                 {
                     {"detail", RPCArg::Type::NUM, RPCArg::Optional::NO, "The detail level."},
                     {"maker", RPCArg::Type::STR, RPCArg::Optional::NO, "The symbol of the token being sold by the maker (e.g. LTC)."},
-                    {"taker", RPCArg::Type::STR, RPCArg::Optional::NO, "The symbol of the token being sold by the taker (e.g. BLOCK)."},
+                    {"taker", RPCArg::Type::STR, RPCArg::Optional::NO, "The symbol of the token being sold by the taker (e.g. SCA)."},
                     {"max_orders", RPCArg::Type::NUM, "50", "The maximum total orders to display for bids and asks combined."},
                 },
                 RPCResult{
                 "\n"
                 },
                 RPCExamples{
-                    HelpExampleCli("dxGetOrderBook", "3 BLOCK LTC")
-                  + HelpExampleRpc("dxGetOrderBook", "3, \"BLOCK\", \"LTC\"")
-                  + HelpExampleCli("dxGetOrderBook", "3 BLOCK LTC 60")
-                  + HelpExampleRpc("dxGetOrderBook", "3, \"BLOCK\", \"LTC\", 60")
+                    HelpExampleCli("dxGetOrderBook", "3 SCA LTC")
+                  + HelpExampleRpc("dxGetOrderBook", "3, \"SCA\", \"LTC\"")
+                  + HelpExampleCli("dxGetOrderBook", "3 SCA LTC 60")
+                  + HelpExampleRpc("dxGetOrderBook", "3, \"SCA\", \"LTC\", 60")
                 },
             }.ToString());
     Value js; json_spirit::read_string(request.params.write(), js); Array params = js.get_array();
@@ -2335,7 +2335,7 @@ UniValue dxPartialOrderChainDetails(const JSONRPCRequest& request) {
                 R"(
     {
         "first_order_id": "0b28e7c7de9a048dd2cb28b7d91062a052d16adf6d1a2154aa99ab2321c29770",
-        "maker": "BLOCK",
+        "maker": "SCA",
         "maker_address": "y4Fn5z58KFA4qLcktBFCrKc8UHrWnNaVym",
         "taker": "LTC",
         "taker_address": "LWvt2ygq8QDkVEcCkMWHR4qXCqL2gC9D2B",
@@ -2493,7 +2493,7 @@ UniValue dxGetTokenBalances(const JSONRPCRequest& request)
                 RPCResult{
                 R"(
     {
-        "BLOCK": "250.83492174",
+        "SCA": "250.83492174",
         "LTC": "0.568942",
         "MONA": "3.452",
         "SYS": "1050.128493"
@@ -2544,7 +2544,7 @@ UniValue dxGetTokenBalances(const JSONRPCRequest& request)
     {
         count++;
         tg.create_thread([&cv,&mu,&count,&connector,&res]() {
-            RenameThread("blocknet-balance-check");
+            RenameThread("scalaris-balance-check");
             const auto & excluded = xbridge::App::instance().getAllLockedUtxos(connector->currency);
             const auto balance = connector->getWalletBalance(excluded);
             {
@@ -2691,10 +2691,10 @@ UniValue gettradingdata(const JSONRPCRequest& request)
                 RPCResult{
                 "{\n"
                 "  \"timestamp\":  \"1559970139\",                          (uint64) Unix epoch timestamp in seconds of when the trade took place.\n"
-                "  \"txid\":       \"4b409r5c5fb1986p30cf7c19afec2c8\",     (string) The Blocknet trade fee transaction ID.\n"
+                "  \"txid\":       \"4b409r5c5fb1986p30cf7c19afec2c8\",     (string) The Scalaris trade fee transaction ID.\n"
                 "  \"to\":         \"Bqtes8j14rE65kcpsEors5JDzDaHiaMtLG\",  (string) The address of the Service Node that received the trade fee.\n"
                 "  \"xid\":        \"9eb57bas331eab3zf3daefd8364cdbL\",     (string) The XBridge transaction ID.\n"
-                "  \"from\":       \"BLOCK\",                               (string) The symbol of the token bought by the maker.\n"
+                "  \"from\":       \"SCA\",                               (string) The symbol of the token bought by the maker.\n"
                 "  \"fromAmount\": 0.001111,                              (uint64) The amount of the token that was bought by the maker.\n"
                 "  \"to\":         \"SYS\",                                 (string) The symbol of the token sold by the maker.\n"
                 "  \"toAmount\":   0.001000,                              (uint64) The amount of the token that was sold by the maker.\n"
@@ -2796,7 +2796,7 @@ UniValue dxGetTradingData(const JSONRPCRequest& request)
         "fee_txid": "4b409e5c5fb1986930cf7c19afec2c89ac2ad4fddc13c1d5479b66ddf4a8fefb",
         "nodepubkey": "Bqtms8j1zrE65kcpsEorE5JDzDaHidMtLG",
         "id": "9eb57bac331eab34f3daefd8364cdb2bb05259c407d805d0bd0c",
-        "taker": "BLOCK",
+        "taker": "SCA",
         "taker_size": 0.001111,
         "maker": "SYS",
         "maker_size": 0.001000
@@ -2806,7 +2806,7 @@ UniValue dxGetTradingData(const JSONRPCRequest& request)
         "fee_txid": "3de7479e8a88ebed986d3b7e7e135291d3fd10e4e6d4c6238663db42c5019286",
         "nodepubkey": "Bqtms8j1zrE65kcpsEorE5JDzDaHidMtLG",
         "id": "fd0fed3ee9fe557d5735768c9bdcd4ab2908165353e0f0cef0d5",
-        "taker": "BLOCK",
+        "taker": "SCA",
         "taker_size": 0.001577,
         "maker": "SYS",
         "maker_size": 0.001420
@@ -2816,7 +2816,7 @@ UniValue dxGetTradingData(const JSONRPCRequest& request)
     Key         | Type | Description
     ------------|------|---------------------------------------------------------
     timestamp   | int  | Unix epoch timestamp of when the trade took place.
-    fee_txid    | str  | The Blocknet trade fee transaction ID.
+    fee_txid    | str  | The Scalaris trade fee transaction ID.
     nodepubkey  | str  | The pubkey of the service node that received the trade
                 |      | fee.
     id          | str  | The order ID.
@@ -2933,7 +2933,7 @@ UniValue dxMakePartialOrder(const JSONRPCRequest& request)
                     {"maker", RPCArg::Type::STR, RPCArg::Optional::NO, "The symbol of the asset being sold by the maker (e.g. LTC)."},
                     {"maker_size", RPCArg::Type::STR, RPCArg::Optional::NO, "The amount of the maker asset being sent."},
                     {"maker_address", RPCArg::Type::STR, RPCArg::Optional::NO, "The maker address containing asset being sent."},
-                    {"taker", RPCArg::Type::STR, RPCArg::Optional::NO, "The symbol of the asset being bought by the maker (e.g. BLOCK)."},
+                    {"taker", RPCArg::Type::STR, RPCArg::Optional::NO, "The symbol of the asset being bought by the maker (e.g. SCA)."},
                     {"taker_size", RPCArg::Type::STR, RPCArg::Optional::NO, "The amount of the taker asset to be received."},
                     {"taker_address", RPCArg::Type::STR, RPCArg::Optional::NO, "The taker address for the receiving asset."},
                     {"minimum_size", RPCArg::Type::STR, RPCArg::Optional::NO, "Minimum maker_size that can be traded in the partial order."},
@@ -2998,10 +2998,10 @@ UniValue dxMakePartialOrder(const JSONRPCRequest& request)
                 )"
                 },
                 RPCExamples{
-                    HelpExampleCli("dxMakePartialOrder", "LTC 25 LLZ1pgb6Jqx8hu84fcr5WC5HMoKRUsRE8H BLOCK 1000 BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR 100")
-                  + HelpExampleRpc("dxMakePartialOrder", "\"LTC\", \"25\", \"LLZ1pgb6Jqx8hu84fcr5WC5HMoKRUsRE8H\", \"BLOCK\", \"1000\", \"BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR\", \"100\"")
-                  + HelpExampleCli("dxMakePartialOrder", "LTC 25 LLZ1pgb6Jqx8hu84fcr5WC5HMoKRUsRE8H BLOCK 1000 BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR 100 true dryrun")
-                  + HelpExampleRpc("dxMakePartialOrder", "\"LTC\", \"25\", \"LLZ1pgb6Jqx8hu84fcr5WC5HMoKRUsRE8H\", \"BLOCK\", \"1000\", \"BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR\", \"100\", \"true\", \"dryrun\"")
+                    HelpExampleCli("dxMakePartialOrder", "LTC 25 LLZ1pgb6Jqx8hu84fcr5WC5HMoKRUsRE8H SCA 1000 BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR 100")
+                  + HelpExampleRpc("dxMakePartialOrder", "\"LTC\", \"25\", \"LLZ1pgb6Jqx8hu84fcr5WC5HMoKRUsRE8H\", \"SCA\", \"1000\", \"BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR\", \"100\"")
+                  + HelpExampleCli("dxMakePartialOrder", "LTC 25 LLZ1pgb6Jqx8hu84fcr5WC5HMoKRUsRE8H SCA 1000 BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR 100 true dryrun")
+                  + HelpExampleRpc("dxMakePartialOrder", "\"LTC\", \"25\", \"LLZ1pgb6Jqx8hu84fcr5WC5HMoKRUsRE8H\", \"SCA\", \"1000\", \"BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR\", \"100\", \"true\", \"dryrun\"")
                 },
             }.ToString());
 
@@ -3193,7 +3193,7 @@ UniValue dxSplitAddress(const JSONRPCRequest& request)
                 RPCResult{
                 R"(
     {
-        "token": "BLOCK",
+        "token": "SCA",
         "include_fees": true,
         "split_amount_requested": "4.0",
         "split_amount_with_fees": "4.00040000",
@@ -3217,10 +3217,10 @@ UniValue dxSplitAddress(const JSONRPCRequest& request)
                 )"
                 },
                 RPCExamples{
-                   HelpExampleCli("dxSplitAddress", "BLOCK 10.5 BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR")
-                   + HelpExampleRpc("dxSplitAddress", "\"BLOCK\", \"10.5\", \"BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR\"")
-                   + HelpExampleCli("dxSplitAddress", "BLOCK 10.5 BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR true false true")
-                   + HelpExampleRpc("dxSplitAddress", "\"BLOCK\", \"10.5\", \"BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR\", true, false, true")
+                   HelpExampleCli("dxSplitAddress", "SCA 10.5 BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR")
+                   + HelpExampleRpc("dxSplitAddress", "\"SCA\", \"10.5\", \"BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR\"")
+                   + HelpExampleCli("dxSplitAddress", "SCA 10.5 BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR true false true")
+                   + HelpExampleRpc("dxSplitAddress", "\"SCA\", \"10.5\", \"BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR\", true, false, true")
                 },
             }.ToString());
 
@@ -3298,7 +3298,7 @@ UniValue dxSplitInputs(const JSONRPCRequest& request)
                 RPCResult{
                 R"(
     {
-        "token": "BLOCK",
+        "token": "SCA",
         "include_fees": true,
         "split_amount_requested": "4.0",
         "split_amount_with_fees": "4.00040000",
@@ -3323,8 +3323,8 @@ UniValue dxSplitInputs(const JSONRPCRequest& request)
                 )"
                 },
                 RPCExamples{
-                     HelpExampleCli("dxSplitInputs", "BLOCK 10.5 BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR true false true [{\"txid\":\"ed7d16abd5c0bf42dec36335d0f63938f1d9c10e7202bc780b888a51d291d3dc\",\"vout\":0},{\"txid\":\"ed7d16abd5c0bf42dec36335d0f63938f1d9c10e7202bc780b888a51d291d3dc\",\"vout\":1}]")
-                   + HelpExampleRpc("dxSplitInputs", "\"BLOCK\", \"10.5\", \"BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR\", true, false, true, [{\"txid\":\"ed7d16abd5c0bf42dec36335d0f63938f1d9c10e7202bc780b888a51d291d3dc\",\"vout\":0},{\"txid\":\"ed7d16abd5c0bf42dec36335d0f63938f1d9c10e7202bc780b888a51d291d3dc\",\"vout\":1}]")
+                     HelpExampleCli("dxSplitInputs", "SCA 10.5 BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR true false true [{\"txid\":\"ed7d16abd5c0bf42dec36335d0f63938f1d9c10e7202bc780b888a51d291d3dc\",\"vout\":0},{\"txid\":\"ed7d16abd5c0bf42dec36335d0f63938f1d9c10e7202bc780b888a51d291d3dc\",\"vout\":1}]")
+                   + HelpExampleRpc("dxSplitInputs", "\"SCA\", \"10.5\", \"BWQrvmuHB4C68KH5V7fcn9bFtWN8y5hBmR\", true, false, true, [{\"txid\":\"ed7d16abd5c0bf42dec36335d0f63938f1d9c10e7202bc780b888a51d291d3dc\",\"vout\":0},{\"txid\":\"ed7d16abd5c0bf42dec36335d0f63938f1d9c10e7202bc780b888a51d291d3dc\",\"vout\":1}]")
                 },
             }.ToString());
 
@@ -3430,12 +3430,12 @@ UniValue dxGetUtxos(const JSONRPCRequest& request)
                 )"
                 },
                 RPCExamples{
-                     HelpExampleCli("dxGetUtxos", "BLOCK")
-                   + HelpExampleRpc("dxGetUtxos", "\"BLOCK\"")
+                     HelpExampleCli("dxGetUtxos", "SCA")
+                   + HelpExampleRpc("dxGetUtxos", "\"SCA\"")
                    + HelpExampleCli("dxGetUtxos", "BTC")
                    + HelpExampleRpc("dxGetUtxos", "\"BTC\"")
-                   + HelpExampleCli("dxGetUtxos", "BLOCK true")
-                   + HelpExampleRpc("dxGetUtxos", "\"BLOCK\", true")
+                   + HelpExampleCli("dxGetUtxos", "SCA true")
+                   + HelpExampleRpc("dxGetUtxos", "\"SCA\", true")
                 },
             }.ToString());
 

@@ -27,7 +27,7 @@ BlocknetSendFunds1::BlocknetSendFunds1(WalletModel *w, int id, QFrame *parent) :
     subtitleLbl->setObjectName("h2");
 
     addressTi = new BlocknetAddressEditor(BGU::spi(675));
-    addressTi->setPlaceholderText(tr("Enter Blocknet Address..."));
+    addressTi->setPlaceholderText(tr("Enter Scalaris Address..."));
     addressTi->setAddressValidator([w](QString &addr) -> bool {
         if (w == nullptr)
             return false;

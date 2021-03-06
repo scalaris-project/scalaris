@@ -1450,8 +1450,8 @@
         <translation>Beløp</translation>
     </message>
     <message>
-        <source>Enter a Blocknet address (e.g. %1)</source>
-        <translation>Oppgi en Blocknet-adresse (f.eks. %1)</translation>
+        <source>Enter a Scalaris address (e.g. %1)</source>
+        <translation>Oppgi en Scalaris-adresse (f.eks. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>

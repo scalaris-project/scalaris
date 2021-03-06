@@ -1005,8 +1005,8 @@ BOOST_FIXTURE_TEST_CASE(governance_tests_undo_submissions, TestChainPoS)
         BOOST_REQUIRE_MESSAGE(sent, "Send to another address failed");
         int checkHeight = chainActive.Height();
         StakeBlocks(1), SyncWithValidationInterfaceQueue();
-        BOOST_REQUIRE_MESSAGE(recvouts[0].first.nValue == 200 * COIN, strprintf("Expecting a vote utxo with %s BLOCK, found %s BLOCK", FormatMoney(200*COIN), FormatMoney(recvouts[0].first.nValue)));
-        BOOST_REQUIRE_MESSAGE(recvouts[1].first.nValue == 2 * COIN, strprintf("Expecting a vote input with %s BLOCK, found %s BLOCK", FormatMoney(2*COIN), FormatMoney(recvouts[1].first.nValue)));
+        BOOST_REQUIRE_MESSAGE(recvouts[0].first.nValue == 200 * COIN, strprintf("Expecting a vote utxo with %s SCA, found %s SCA", FormatMoney(200*COIN), FormatMoney(recvouts[0].first.nValue)));
+        BOOST_REQUIRE_MESSAGE(recvouts[1].first.nValue == 2 * COIN, strprintf("Expecting a vote input with %s SCA, found %s SCA", FormatMoney(2*COIN), FormatMoney(recvouts[1].first.nValue)));
         BOOST_REQUIRE_MESSAGE(checkHeight+1 == chainActive.Height(), "Block should be accepted");
         BOOST_REQUIRE_MESSAGE(isTxInBlock(chainActive.Tip(), sendtx->GetHash(), consensus), "Expecting transaction to be included in the block");
     }
@@ -1462,7 +1462,7 @@ BOOST_FIXTURE_TEST_CASE(governance_tests_submissions, TestChainPoS)
             uint256 hashBlock;
             CTransactionRef vtx;
             BOOST_CHECK_MESSAGE(GetTransaction(txns[0]->vin[0].prevout.hash, vtx, consensus, hashBlock), "Vote input tx should be valid");
-            BOOST_CHECK_MESSAGE(vtx->vout[txns[0]->vin[0].prevout.n].nValue == 1 * COIN, strprintf("Vote input tx amount is wrong, expected 1 BLOCK found %s", FormatMoney(vtx->vout[txns[0]->vin[0].prevout.n].nValue)));
+            BOOST_CHECK_MESSAGE(vtx->vout[txns[0]->vin[0].prevout.n].nValue == 1 * COIN, strprintf("Vote input tx amount is wrong, expected 1 SCA found %s", FormatMoney(vtx->vout[txns[0]->vin[0].prevout.n].nValue)));
             StakeBlocks(1), SyncWithValidationInterfaceQueue();
         }
         auto votes = gov::Governance::instance().getVotes(proposal.getHash());
@@ -1471,10 +1471,10 @@ BOOST_FIXTURE_TEST_CASE(governance_tests_submissions, TestChainPoS)
             uint256 hashBlock;
             CTransactionRef vtx;
             BOOST_CHECK_MESSAGE(GetTransaction(votes[0].getUtxo().hash, vtx, consensus, hashBlock), "Vote utxo tx should be valid");
-            BOOST_CHECK_MESSAGE(vtx->vout[votes[0].getUtxo().n].nValue == 1000 * COIN, strprintf("Vote utxo amount is wrong, expected 1000 BLOCK found %s", FormatMoney(vtx->vout[votes[0].getUtxo().n].nValue)));
+            BOOST_CHECK_MESSAGE(vtx->vout[votes[0].getUtxo().n].nValue == 1000 * COIN, strprintf("Vote utxo amount is wrong, expected 1000 SCA found %s", FormatMoney(vtx->vout[votes[0].getUtxo().n].nValue)));
             CTxDestination vdest;
             BOOST_CHECK(ExtractDestination(vtx->vout[votes[0].getUtxo().n].scriptPubKey, vdest));
-            BOOST_CHECK_MESSAGE(vdest == voteDest, "Vote utxo address does not match the expected address the 1000 BLOCK was sent to");
+            BOOST_CHECK_MESSAGE(vdest == voteDest, "Vote utxo address does not match the expected address the 1000 SCA was sent to");
         }
         // clean up
         cleanup(resetBlocks, wallet.get());

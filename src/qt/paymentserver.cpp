@@ -48,15 +48,15 @@
 #include <QUrlQuery>
 
 const int BITCOIN_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
-const QString BITCOIN_IPC_PREFIX("blocknet:");
+const QString BITCOIN_IPC_PREFIX("scalaris:");
 #ifdef ENABLE_BIP70
 // BIP70 payment protocol messages
 const char* BIP70_MESSAGE_PAYMENTACK = "PaymentACK";
 const char* BIP70_MESSAGE_PAYMENTREQUEST = "PaymentRequest";
 // BIP71 payment protocol media types
-const char* BIP71_MIMETYPE_PAYMENT = "application/blocknet-payment";
-const char* BIP71_MIMETYPE_PAYMENTACK = "application/blocknet-paymentack";
-const char* BIP71_MIMETYPE_PAYMENTREQUEST = "application/blocknet-paymentrequest";
+const char* BIP71_MIMETYPE_PAYMENT = "application/scalaris-payment";
+const char* BIP71_MIMETYPE_PAYMENTACK = "application/scalaris-paymentack";
+const char* BIP71_MIMETYPE_PAYMENTREQUEST = "application/scalaris-paymentrequest";
 #endif
 
 //
@@ -66,7 +66,7 @@ const char* BIP71_MIMETYPE_PAYMENTREQUEST = "application/blocknet-paymentrequest
 //
 static QString ipcServerName()
 {
-    QString name("BlocknetQt");
+    QString name("ScalarisQt");
 
     // Append a simple hash of the datadir
     // Note that GetDataDir(true) returns a different path
@@ -224,7 +224,7 @@ PaymentServer::PaymentServer(QObject* parent, bool startLocalServer) :
         if (!uriServer->listen(name)) {
             // constructor is called early in init, so don't use "Q_EMIT message()" here
             QMessageBox::critical(nullptr, tr("Payment request error"),
-                tr("Cannot start Blocknet: click-to-pay handler"));
+                tr("Cannot start Scalaris: click-to-pay handler"));
         }
         else {
             connect(uriServer, &QLocalServer::newConnection, this, &PaymentServer::handleURIConnection);
@@ -284,9 +284,9 @@ void PaymentServer::handleURIOrFile(const QString& s)
         return;
     }
 
-    if (s.startsWith("blocknet://", Qt::CaseInsensitive))
+    if (s.startsWith("scalaris://", Qt::CaseInsensitive))
     {
-        Q_EMIT message(tr("URI handling"), tr("'blocknet://' is not a valid URI. Use 'blocknet:' instead."),
+        Q_EMIT message(tr("URI handling"), tr("'scalaris://' is not a valid URI. Use 'scalaris:' instead."),
             CClientUIInterface::MSG_ERROR);
     }
     else if (s.startsWith(BITCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // bitcoin: URI
@@ -340,7 +340,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
             }
             else
                 Q_EMIT message(tr("URI handling"),
-                    tr("URI cannot be parsed! This can be caused by an invalid Blocknet address or malformed URI parameters."),
+                    tr("URI cannot be parsed! This can be caused by an invalid Scalaris address or malformed URI parameters."),
                     CClientUIInterface::ICON_WARNING);
 
             return;

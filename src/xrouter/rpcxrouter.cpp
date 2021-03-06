@@ -385,10 +385,10 @@ static UniValue xrGetTransaction(const JSONRPCRequest& request)
                 )"
                 },
                 RPCExamples{
-                    HelpExampleCli("xrGetTransaction", "BLOCK 97578005939f0c25afd6358772ad1ff90f6e2e089d552c7acb9c10c56d983c1e")
-                  + HelpExampleRpc("xrGetTransaction", "\"BLOCK\", \"97578005939f0c25afd6358772ad1ff90f6e2e089d552c7acb9c10c56d983c1e\"")
-                  + HelpExampleCli("xrGetTransaction", "BLOCK 97578005939f0c25afd6358772ad1ff90f6e2e089d552c7acb9c10c56d983c1e 2")
-                  + HelpExampleRpc("xrGetTransaction", "\"BLOCK\", \"97578005939f0c25afd6358772ad1ff90f6e2e089d552c7acb9c10c56d983c1e\", 2")
+                    HelpExampleCli("xrGetTransaction", "SCA 97578005939f0c25afd6358772ad1ff90f6e2e089d552c7acb9c10c56d983c1e")
+                  + HelpExampleRpc("xrGetTransaction", "\"SCA\", \"97578005939f0c25afd6358772ad1ff90f6e2e089d552c7acb9c10c56d983c1e\"")
+                  + HelpExampleCli("xrGetTransaction", "SCA 97578005939f0c25afd6358772ad1ff90f6e2e089d552c7acb9c10c56d983c1e 2")
+                  + HelpExampleRpc("xrGetTransaction", "\"SCA\", \"97578005939f0c25afd6358772ad1ff90f6e2e089d552c7acb9c10c56d983c1e\", 2")
                 },
             }.ToString());
 
@@ -514,10 +514,10 @@ static UniValue xrDecodeRawTransaction(const JSONRPCRequest& request)
                 )"
                 },
                 RPCExamples{
-                    HelpExampleCli("xrDecodeRawTransaction", "BLOCK 010000000188d2c346e4215872409eebfaf7a5676c84261ac7e2b0acfe36da3a4e3860ee4b010000004847304402201aa718585891f0e15ef8b9bc642f9d283b66beab42fd2d63e49419d2b9f5b4fb02205f37a09acfaa7b537ddf5984e512025907628279ae6b8d0a2a5c1a256c7b95dd01ffffffff03000000000000000000feb489fb14000000232103f5b9bb3158fc036463f0fbd6fc3f7de66cd89add440d1e849c2feb572bd23855ac801d2c04000000001976a9146499ceebaa0d586c95271575780b3f9590f9f8ca88ac00000000")
-                  + HelpExampleRpc("xrDecodeRawTransaction", "\"BLOCK\", \"010000000188d2c346e4215872409eebfaf7a5676c84261ac7e2b0acfe36da3a4e3860ee4b010000004847304402201aa718585891f0e15ef8b9bc642f9d283b66beab42fd2d63e49419d2b9f5b4fb02205f37a09acfaa7b537ddf5984e512025907628279ae6b8d0a2a5c1a256c7b95dd01ffffffff03000000000000000000feb489fb14000000232103f5b9bb3158fc036463f0fbd6fc3f7de66cd89add440d1e849c2feb572bd23855ac801d2c04000000001976a9146499ceebaa0d586c95271575780b3f9590f9f8ca88ac00000000\"")
-                  + HelpExampleCli("xrDecodeRawTransaction", "BLOCK 010000000188d2c346e4215872409eebfaf7a5676c84261ac7e2b0acfe36da3a4e3860ee4b010000004847304402201aa718585891f0e15ef8b9bc642f9d283b66beab42fd2d63e49419d2b9f5b4fb02205f37a09acfaa7b537ddf5984e512025907628279ae6b8d0a2a5c1a256c7b95dd01ffffffff03000000000000000000feb489fb14000000232103f5b9bb3158fc036463f0fbd6fc3f7de66cd89add440d1e849c2feb572bd23855ac801d2c04000000001976a9146499ceebaa0d586c95271575780b3f9590f9f8ca88ac00000000 2")
-                  + HelpExampleRpc("xrDecodeRawTransaction", "\"BLOCK\", \"010000000188d2c346e4215872409eebfaf7a5676c84261ac7e2b0acfe36da3a4e3860ee4b010000004847304402201aa718585891f0e15ef8b9bc642f9d283b66beab42fd2d63e49419d2b9f5b4fb02205f37a09acfaa7b537ddf5984e512025907628279ae6b8d0a2a5c1a256c7b95dd01ffffffff03000000000000000000feb489fb14000000232103f5b9bb3158fc036463f0fbd6fc3f7de66cd89add440d1e849c2feb572bd23855ac801d2c04000000001976a9146499ceebaa0d586c95271575780b3f9590f9f8ca88ac00000000\", 2")
+                    HelpExampleCli("xrDecodeRawTransaction", "SCA 010000000188d2c346e4215872409eebfaf7a5676c84261ac7e2b0acfe36da3a4e3860ee4b010000004847304402201aa718585891f0e15ef8b9bc642f9d283b66beab42fd2d63e49419d2b9f5b4fb02205f37a09acfaa7b537ddf5984e512025907628279ae6b8d0a2a5c1a256c7b95dd01ffffffff03000000000000000000feb489fb14000000232103f5b9bb3158fc036463f0fbd6fc3f7de66cd89add440d1e849c2feb572bd23855ac801d2c04000000001976a9146499ceebaa0d586c95271575780b3f9590f9f8ca88ac00000000")
+                  + HelpExampleRpc("xrDecodeRawTransaction", "\"SCA\", \"010000000188d2c346e4215872409eebfaf7a5676c84261ac7e2b0acfe36da3a4e3860ee4b010000004847304402201aa718585891f0e15ef8b9bc642f9d283b66beab42fd2d63e49419d2b9f5b4fb02205f37a09acfaa7b537ddf5984e512025907628279ae6b8d0a2a5c1a256c7b95dd01ffffffff03000000000000000000feb489fb14000000232103f5b9bb3158fc036463f0fbd6fc3f7de66cd89add440d1e849c2feb572bd23855ac801d2c04000000001976a9146499ceebaa0d586c95271575780b3f9590f9f8ca88ac00000000\"")
+                  + HelpExampleCli("xrDecodeRawTransaction", "SCA 010000000188d2c346e4215872409eebfaf7a5676c84261ac7e2b0acfe36da3a4e3860ee4b010000004847304402201aa718585891f0e15ef8b9bc642f9d283b66beab42fd2d63e49419d2b9f5b4fb02205f37a09acfaa7b537ddf5984e512025907628279ae6b8d0a2a5c1a256c7b95dd01ffffffff03000000000000000000feb489fb14000000232103f5b9bb3158fc036463f0fbd6fc3f7de66cd89add440d1e849c2feb572bd23855ac801d2c04000000001976a9146499ceebaa0d586c95271575780b3f9590f9f8ca88ac00000000 2")
+                  + HelpExampleRpc("xrDecodeRawTransaction", "\"SCA\", \"010000000188d2c346e4215872409eebfaf7a5676c84261ac7e2b0acfe36da3a4e3860ee4b010000004847304402201aa718585891f0e15ef8b9bc642f9d283b66beab42fd2d63e49419d2b9f5b4fb02205f37a09acfaa7b537ddf5984e512025907628279ae6b8d0a2a5c1a256c7b95dd01ffffffff03000000000000000000feb489fb14000000232103f5b9bb3158fc036463f0fbd6fc3f7de66cd89add440d1e849c2feb572bd23855ac801d2c04000000001976a9146499ceebaa0d586c95271575780b3f9590f9f8ca88ac00000000\", 2")
                 },
             }.ToString());
 
@@ -634,10 +634,10 @@ static UniValue xrGetBlocks(const JSONRPCRequest& request)
                 )"
                 },
                 RPCExamples{
-                    HelpExampleCli("xrGetBlocks", "BLOCK \"39e11e62d89cfcfd2b0800f7e9b4bd439fa44a7d7aa111e1e7a8b235d848eadf,7b41ea6a8bf0ed93fd4f3a6a67a558941634400e9eaa51676d5af5077a01760c\"")
-                  + HelpExampleRpc("xrGetBlocks", "\"BLOCK\", \"39e11e62d89cfcfd2b0800f7e9b4bd439fa44a7d7aa111e1e7a8b235d848eadf,7b41ea6a8bf0ed93fd4f3a6a67a558941634400e9eaa51676d5af5077a01760c\"")
-                  + HelpExampleCli("xrGetBlocks", "BLOCK \"39e11e62d89cfcfd2b0800f7e9b4bd439fa44a7d7aa111e1e7a8b235d848eadf,7b41ea6a8bf0ed93fd4f3a6a67a558941634400e9eaa51676d5af5077a01760c\" 2")
-                  + HelpExampleRpc("xrGetBlocks", "\"BLOCK\", \"39e11e62d89cfcfd2b0800f7e9b4bd439fa44a7d7aa111e1e7a8b235d848eadf,7b41ea6a8bf0ed93fd4f3a6a67a558941634400e9eaa51676d5af5077a01760c\", 2")
+                    HelpExampleCli("xrGetBlocks", "SCA \"39e11e62d89cfcfd2b0800f7e9b4bd439fa44a7d7aa111e1e7a8b235d848eadf,7b41ea6a8bf0ed93fd4f3a6a67a558941634400e9eaa51676d5af5077a01760c\"")
+                  + HelpExampleRpc("xrGetBlocks", "\"SCA\", \"39e11e62d89cfcfd2b0800f7e9b4bd439fa44a7d7aa111e1e7a8b235d848eadf,7b41ea6a8bf0ed93fd4f3a6a67a558941634400e9eaa51676d5af5077a01760c\"")
+                  + HelpExampleCli("xrGetBlocks", "SCA \"39e11e62d89cfcfd2b0800f7e9b4bd439fa44a7d7aa111e1e7a8b235d848eadf,7b41ea6a8bf0ed93fd4f3a6a67a558941634400e9eaa51676d5af5077a01760c\" 2")
+                  + HelpExampleRpc("xrGetBlocks", "\"SCA\", \"39e11e62d89cfcfd2b0800f7e9b4bd439fa44a7d7aa111e1e7a8b235d848eadf,7b41ea6a8bf0ed93fd4f3a6a67a558941634400e9eaa51676d5af5077a01760c\", 2")
                 },
             }.ToString());
 
@@ -662,7 +662,7 @@ static UniValue xrGetBlocks(const JSONRPCRequest& request)
         if (hash.empty() || hash.find(',') != std::string::npos) {
             UniValue error(UniValue::VOBJ);
             error.pushKV("error", "block_hashes must be specified in a comma-delimited string with no spaces.\n"
-                                        "Example: xrGetBlocks BLOCK \"302a309d6b6c4a65e4b9ff06c7ea81bb17e985d00abdb01978ace62cc5e18421,"
+                                        "Example: xrGetBlocks SCA \"302a309d6b6c4a65e4b9ff06c7ea81bb17e985d00abdb01978ace62cc5e18421,"
                                         "175d2a428b5649c2a4732113e7f348ba22a0e69cc0a87631449d1d77cd6e1b04,"
                                         "34989eca8ed66ff53631294519e147a12f4860123b4bdba36feac6da8db492ab\"");
             error.pushKV("code", xrouter::INVALID_PARAMETERS);
@@ -778,10 +778,10 @@ static UniValue xrGetTransactions(const JSONRPCRequest& request)
                 )"
                 },
                 RPCExamples{
-                    HelpExampleCli("xrGetTransactions", "BLOCK \"6582c8028f409a98c96a73e3efeca277ea9ee43aeef174801c6fa6474b66f4e7,4d4db727a3b36e6689af82765cadabb235fd9bdfeb94de0210804c6dd5d2031d\"")
-                  + HelpExampleRpc("xrGetTransactions", "\"BLOCK\", \"6582c8028f409a98c96a73e3efeca277ea9ee43aeef174801c6fa6474b66f4e7,4d4db727a3b36e6689af82765cadabb235fd9bdfeb94de0210804c6dd5d2031d\"")
-                  + HelpExampleCli("xrGetTransactions", "BLOCK \"6582c8028f409a98c96a73e3efeca277ea9ee43aeef174801c6fa6474b66f4e7,4d4db727a3b36e6689af82765cadabb235fd9bdfeb94de0210804c6dd5d2031d\" 2")
-                  + HelpExampleRpc("xrGetTransactions", "\"BLOCK\", \"6582c8028f409a98c96a73e3efeca277ea9ee43aeef174801c6fa6474b66f4e7,4d4db727a3b36e6689af82765cadabb235fd9bdfeb94de0210804c6dd5d2031d\", 2")
+                    HelpExampleCli("xrGetTransactions", "SCA \"6582c8028f409a98c96a73e3efeca277ea9ee43aeef174801c6fa6474b66f4e7,4d4db727a3b36e6689af82765cadabb235fd9bdfeb94de0210804c6dd5d2031d\"")
+                  + HelpExampleRpc("xrGetTransactions", "\"SCA\", \"6582c8028f409a98c96a73e3efeca277ea9ee43aeef174801c6fa6474b66f4e7,4d4db727a3b36e6689af82765cadabb235fd9bdfeb94de0210804c6dd5d2031d\"")
+                  + HelpExampleCli("xrGetTransactions", "SCA \"6582c8028f409a98c96a73e3efeca277ea9ee43aeef174801c6fa6474b66f4e7,4d4db727a3b36e6689af82765cadabb235fd9bdfeb94de0210804c6dd5d2031d\" 2")
+                  + HelpExampleRpc("xrGetTransactions", "\"SCA\", \"6582c8028f409a98c96a73e3efeca277ea9ee43aeef174801c6fa6474b66f4e7,4d4db727a3b36e6689af82765cadabb235fd9bdfeb94de0210804c6dd5d2031d\", 2")
                 },
             }.ToString());
 
@@ -807,7 +807,7 @@ static UniValue xrGetTransactions(const JSONRPCRequest& request)
         if (hash.empty() || hash.find(',') != std::string::npos) {
             UniValue error(UniValue::VOBJ);
             error.pushKV("error", "tx_ids must be specified in a comma-delimited string with no spaces.\n"
-                                        "Example: xrGetTransactions BLOCK \"24ff5506a30772acfb65012f1b3309d62786bc386be3b6ea853a798a71c010c8,"
+                                        "Example: xrGetTransactions SCA \"24ff5506a30772acfb65012f1b3309d62786bc386be3b6ea853a798a71c010c8,"
                                         "24b6bcb44f045d7a4cf8cd47c94a14cc609352851ea973f8a47b20578391629f,"
                                         "66a5809c7090456965fe30280b88f69943e620894e1c4538a724ed9a89c769be\"");
             error.pushKV("code", xrouter::INVALID_PARAMETERS);
@@ -849,10 +849,10 @@ static UniValue xrGetTxBloomFilter(const JSONRPCRequest& request)
                 "\n"
                 },
                 RPCExamples{
-                    HelpExampleCli("xrGetTxBloomFilter", "BLOCK 0x0000000018")
-                  + HelpExampleRpc("xrGetTxBloomFilter", "\"BLOCK\", \"0x0000000018\"")
-                  + HelpExampleCli("xrGetTxBloomFilter", "BLOCK 0x0000000018 2")
-                  + HelpExampleRpc("xrGetTxBloomFilter", "\"BLOCK\", \"0x0000000018\", 2")
+                    HelpExampleCli("xrGetTxBloomFilter", "SCA 0x0000000018")
+                  + HelpExampleRpc("xrGetTxBloomFilter", "\"SCA\", \"0x0000000018\"")
+                  + HelpExampleCli("xrGetTxBloomFilter", "SCA 0x0000000018 2")
+                  + HelpExampleRpc("xrGetTxBloomFilter", "\"SCA\", \"0x0000000018\", 2")
                 },
             }.ToString());
 
@@ -911,10 +911,10 @@ static UniValue xrGenerateBloomFilter(const JSONRPCRequest& request)
                 "\n"
                 },
                 RPCExamples{
-                    HelpExampleCli("xrGenerateBloomFilter", "BLOCK \"BXziudHsEee8vDTgvXXNLCXwKouSssLMQ3,BgSDpy7F7PuBZpG4PQfryX9m94NNcmjWAX\"")
-                  + HelpExampleRpc("xrGenerateBloomFilter", "\"BLOCK\", \"BXziudHsEee8vDTgvXXNLCXwKouSssLMQ3,BgSDpy7F7PuBZpG4PQfryX9m94NNcmjWAX\"")
-                  + HelpExampleCli("xrGenerateBloomFilter", "BLOCK \"BXziudHsEee8vDTgvXXNLCXwKouSssLMQ3,BgSDpy7F7PuBZpG4PQfryX9m94NNcmjWAX\" 2")
-                  + HelpExampleRpc("xrGenerateBloomFilter", "\"BLOCK\", \"BXziudHsEee8vDTgvXXNLCXwKouSssLMQ3,BgSDpy7F7PuBZpG4PQfryX9m94NNcmjWAX\", 2")
+                    HelpExampleCli("xrGenerateBloomFilter", "SCA \"BXziudHsEee8vDTgvXXNLCXwKouSssLMQ3,BgSDpy7F7PuBZpG4PQfryX9m94NNcmjWAX\"")
+                  + HelpExampleRpc("xrGenerateBloomFilter", "\"SCA\", \"BXziudHsEee8vDTgvXXNLCXwKouSssLMQ3,BgSDpy7F7PuBZpG4PQfryX9m94NNcmjWAX\"")
+                  + HelpExampleCli("xrGenerateBloomFilter", "SCA \"BXziudHsEee8vDTgvXXNLCXwKouSssLMQ3,BgSDpy7F7PuBZpG4PQfryX9m94NNcmjWAX\" 2")
+                  + HelpExampleRpc("xrGenerateBloomFilter", "\"SCA\", \"BXziudHsEee8vDTgvXXNLCXwKouSssLMQ3,BgSDpy7F7PuBZpG4PQfryX9m94NNcmjWAX\", 2")
                 },
             }.ToString());
 
@@ -1144,8 +1144,8 @@ static UniValue xrSendTransaction(const JSONRPCRequest& request)
                 )"
                 },
                 RPCExamples{
-                    HelpExampleCli("xrSendTransaction", "BLOCK 010000000101b4b67db0875632e4ff6cf1b9c6988c81d7ddefbf1be9a0ffd6b5109434eeff010000006a473044022007c31c3909ee93a5d8f589b1e99b4d71b6723507de31b90af3e0373812b7cdd602206d6fc5a3752530b634ba3b6a8d0997293b299c1184b0d90397242bedb6fc5f9a01210397b2f25181661d7c39d68667e0d1b99820ce8183b7a42da0dce3a623a3d30b67ffffffff08005039278c0400001976a914245ad0cca6ec4233791d89258e25cd7d9b5ec69e88ac00204aa9d10100001976a914216c4f3fdb628a97aed21569e7d16de369c1c30a88ac36e3c8239b0d00001976a914e89125937281a96e9ed1abf54b7529a08eb3ef9e88ac00204aa9d10100001976a91475fc439f3344039ef796fa28b2c563f29c960f0f88ac0010a5d4e80000001976a9148abaf7773d9aea7b7bec1417cb0bc002daf1952988ac0010a5d4e80000001976a9142e276ba01bf62a5ac76a818bf990047d4d0aaf5d88ac0010a5d4e80000001976a91421d5b48b854f74e7dcc89bf551e1f8dec87680cd88ac0010a5d4e80000001976a914c18d9ac6189d43f43240539491a53835219363fc88ac00000000")
-                  + HelpExampleRpc("xrSendTransaction", "\"BLOCK\", \"010000000101b4b67db0875632e4ff6cf1b9c6988c81d7ddefbf1be9a0ffd6b5109434eeff010000006a473044022007c31c3909ee93a5d8f589b1e99b4d71b6723507de31b90af3e0373812b7cdd602206d6fc5a3752530b634ba3b6a8d0997293b299c1184b0d90397242bedb6fc5f9a01210397b2f25181661d7c39d68667e0d1b99820ce8183b7a42da0dce3a623a3d30b67ffffffff08005039278c0400001976a914245ad0cca6ec4233791d89258e25cd7d9b5ec69e88ac00204aa9d10100001976a914216c4f3fdb628a97aed21569e7d16de369c1c30a88ac36e3c8239b0d00001976a914e89125937281a96e9ed1abf54b7529a08eb3ef9e88ac00204aa9d10100001976a91475fc439f3344039ef796fa28b2c563f29c960f0f88ac0010a5d4e80000001976a9148abaf7773d9aea7b7bec1417cb0bc002daf1952988ac0010a5d4e80000001976a9142e276ba01bf62a5ac76a818bf990047d4d0aaf5d88ac0010a5d4e80000001976a91421d5b48b854f74e7dcc89bf551e1f8dec87680cd88ac0010a5d4e80000001976a914c18d9ac6189d43f43240539491a53835219363fc88ac00000000\"")
+                    HelpExampleCli("xrSendTransaction", "SCA 010000000101b4b67db0875632e4ff6cf1b9c6988c81d7ddefbf1be9a0ffd6b5109434eeff010000006a473044022007c31c3909ee93a5d8f589b1e99b4d71b6723507de31b90af3e0373812b7cdd602206d6fc5a3752530b634ba3b6a8d0997293b299c1184b0d90397242bedb6fc5f9a01210397b2f25181661d7c39d68667e0d1b99820ce8183b7a42da0dce3a623a3d30b67ffffffff08005039278c0400001976a914245ad0cca6ec4233791d89258e25cd7d9b5ec69e88ac00204aa9d10100001976a914216c4f3fdb628a97aed21569e7d16de369c1c30a88ac36e3c8239b0d00001976a914e89125937281a96e9ed1abf54b7529a08eb3ef9e88ac00204aa9d10100001976a91475fc439f3344039ef796fa28b2c563f29c960f0f88ac0010a5d4e80000001976a9148abaf7773d9aea7b7bec1417cb0bc002daf1952988ac0010a5d4e80000001976a9142e276ba01bf62a5ac76a818bf990047d4d0aaf5d88ac0010a5d4e80000001976a91421d5b48b854f74e7dcc89bf551e1f8dec87680cd88ac0010a5d4e80000001976a914c18d9ac6189d43f43240539491a53835219363fc88ac00000000")
+                  + HelpExampleRpc("xrSendTransaction", "\"SCA\", \"010000000101b4b67db0875632e4ff6cf1b9c6988c81d7ddefbf1be9a0ffd6b5109434eeff010000006a473044022007c31c3909ee93a5d8f589b1e99b4d71b6723507de31b90af3e0373812b7cdd602206d6fc5a3752530b634ba3b6a8d0997293b299c1184b0d90397242bedb6fc5f9a01210397b2f25181661d7c39d68667e0d1b99820ce8183b7a42da0dce3a623a3d30b67ffffffff08005039278c0400001976a914245ad0cca6ec4233791d89258e25cd7d9b5ec69e88ac00204aa9d10100001976a914216c4f3fdb628a97aed21569e7d16de369c1c30a88ac36e3c8239b0d00001976a914e89125937281a96e9ed1abf54b7529a08eb3ef9e88ac00204aa9d10100001976a91475fc439f3344039ef796fa28b2c563f29c960f0f88ac0010a5d4e80000001976a9148abaf7773d9aea7b7bec1417cb0bc002daf1952988ac0010a5d4e80000001976a9142e276ba01bf62a5ac76a818bf990047d4d0aaf5d88ac0010a5d4e80000001976a91421d5b48b854f74e7dcc89bf551e1f8dec87680cd88ac0010a5d4e80000001976a914c18d9ac6189d43f43240539491a53835219363fc88ac00000000\"")
                 },
             }.ToString());
 
@@ -1226,7 +1226,7 @@ static UniValue xrGetReply(const JSONRPCRequest& request)
     score          | int  | The respective nodes score based on quality of
                    |      | service. A score of -200 will ban the node for a 24hr
                    |      | period. You can change the ban threshold with the
-                   |      | xrouterbanscore setting in blocknet.conf.
+                   |      | xrouterbanscore setting in scalaris.conf.
     address        | str  | The Service Node's payment address.
     exr            | bool | Whether the Service Node is an Enterprise XRouter
                    |      | node. EXR nodes have greater throughput and service
@@ -1270,14 +1270,14 @@ static UniValue xrShowConfigs(const JSONRPCRequest& request)
       {
         "nodepubkey": "03ca15d619cf36fdc043892b12a3881dd08f2d3905e2ff399ac39cf34b28a995c7",
         "paymentaddress": "BiBbLf8wDyYcSAzsX1SNzZKrc2zZQjS2pa",
-        "config": "[Main]\nwallets=BTC,ETH,LTC,BLOCK,CRW,MERGE,TRC\nmaxfee=0\n[BTC::xrGetBlocks]\n#fee=0.1\n#clientrequestlimit=-1\ndisabled=0\nfetchlimit=50\n\n\n",
+        "config": "[Main]\nwallets=BTC,ETH,LTC,SCA,CRW,MERGE,TRC\nmaxfee=0\n[BTC::xrGetBlocks]\n#fee=0.1\n#clientrequestlimit=-1\ndisabled=0\nfetchlimit=50\n\n\n",
         "plugins": {
         }
       },
       {
         "nodepubkey": "0252d7959e25a8f1a15b4e3e487d310211534dd71ca3316abe463d40a5cf0d67ca",
         "paymentaddress": "BXhndtvEEM5Yh9UEPzrzpBLksjZReGV6Kv",
-        "config": "[Main]\nwallets=BLOCK,LTC,BTC,PIVX,MON\nmaxfee=0\nconsensus=1\ntimeout=30\npaymentaddress=BXhndtvEEM5Yh9UEPzrzpBLksjZReGV6Kv\n\n\n",
+        "config": "[Main]\nwallets=SCA,LTC,BTC,PIVX,MON\nmaxfee=0\nconsensus=1\ntimeout=30\npaymentaddress=BXhndtvEEM5Yh9UEPzrzpBLksjZReGV6Kv\n\n\n",
         "plugins": {
         }
       }
@@ -1383,7 +1383,7 @@ static UniValue xrConnectedNodes(const JSONRPCRequest& request)
     score          | int   | The node's score based on quality of service. A
                    |       | score of -200 will ban the node for a 24hr period.
                    |       | You can change the ban threshold with the
-                   |       | xrouterbanscore setting in blocknet.conf.
+                   |       | xrouterbanscore setting in scalaris.conf.
     banned         | bool  | Signifies if the node is currently banned.
                    |       | true: Node is banned
                    |       | false: Node is not banned
@@ -1488,7 +1488,7 @@ static UniValue xrConnect(const JSONRPCRequest& request)
     score          | int   | The node's score based on quality of service. A
                    |       | score of -200 will ban the node for a 24hr period.
                    |       | You can change the ban threshold with the
-                   |       | xrouterbanscore setting in blocknet.conf.
+                   |       | xrouterbanscore setting in scalaris.conf.
     banned         | bool  | Signifies if the node is currently banned.
                    |       | true: Node is banned
                    |       | false: Node is not banned
@@ -1563,7 +1563,7 @@ static UniValue xrConnect(const JSONRPCRequest& request)
     const auto & service = request.params[0].get_str();
     if (service.empty()) {
         UniValue error(UniValue::VOBJ);
-        error.pushKV("error", "Service not specified. Example: xrConnect xr::BLOCK");
+        error.pushKV("error", "Service not specified. Example: xrConnect xr::SCA");
         error.pushKV("code", xrouter::INVALID_PARAMETERS);
         return error;
     }
@@ -1626,10 +1626,10 @@ static UniValue xrGetNetworkServices(const JSONRPCRequest& request)
                 R"(
     {
       "reply": {
-        "spvwallets": [ "xr::BLOCK", "xr::BTC", "xr::LTC", "xr::MNP", "xr::SYS" ],
+        "spvwallets": [ "xr::SCA", "xr::BTC", "xr::LTC", "xr::MNP", "xr::SYS" ],
         "services": [ "xrs::BTCgetbestblockhash", "xrs::BTCgetblockhash", "xrs::BTCgettransaction", "xrs::SYSgetbestblockhash", "xrs::SYSgetblock", "xrs::SYSgetgovernanceinfo", "xrs::SYSgetmempool", "xrs::SYSlistoffers", "xrs::SYSofferinfo", "xrs::twilio" ],
         "nodecounts": {
-          "xr::BLOCK": 27,
+          "xr::SCA": 27,
           "xr::BTC": 13,
           "xr::LTC": 21,
           "xr::MNP": 1,

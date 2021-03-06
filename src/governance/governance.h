@@ -1252,7 +1252,7 @@ public:
                 // TODO Blocknet governance: concurrency causing state issues
 //                if (cores > 1) {
 //                    tg.create_thread([start,end,consensus,&p1] {
-//                        RenameThread("blocknet-governance");
+//                        RenameThread("scalaris-governance");
 //                        p1(start, end, consensus);
 //                    });
 //                    useThreadGroup = true;
@@ -1376,7 +1376,7 @@ public:
                 try {
                     if (cores > 1) {
                         tg.create_thread([start,end,consensus,&p2] {
-                            RenameThread("blocknet-governance");
+                            RenameThread("scalaris-governance");
                             p2(start, end, consensus);
                         });
                         useThreadGroup = true;

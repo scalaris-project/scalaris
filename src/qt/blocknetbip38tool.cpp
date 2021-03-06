@@ -35,7 +35,7 @@ BlocknetBIP38Tool::BlocknetBIP38Tool(QWidget *popup, int id, QFrame *parent) : B
     titleLbl = new QLabel(tr("BIP38 Encrypt"));
     titleLbl->setObjectName("h2");
 
-    addressTi = new BlocknetLineEditWithTitle(tr("Address"), tr("Enter Blocknet address..."), BGU::spi(100));
+    addressTi = new BlocknetLineEditWithTitle(tr("Address"), tr("Enter Scalaris address..."), BGU::spi(100));
     addressTi->setObjectName("proposal");
     addressTi->setMaximumWidth(BGU::spi(500));
     addressTi->lineEdit->setFocusPolicy(Qt::FocusPolicy::StrongFocus);

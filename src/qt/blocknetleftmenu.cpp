@@ -22,9 +22,9 @@ BlocknetLeftMenu::BlocknetLeftMenu(QFrame *parent) : QFrame(parent), layout(new 
     layout->setContentsMargins(0, BGU::spi(20), 0, 0);
     layout->setSpacing(BGU::spi(10));
 
-    QPixmap pm(":/redesign/white_blocknet_logo.png");
+    QPixmap pm(":/redesign/scalaris_logo.png");
     pm.setDevicePixelRatio(BGU::dpr());
-    logo = new QLabel(tr("Blocknet Logo"));
+    logo = new QLabel(tr("Scalaris Logo"));
     const auto lw = static_cast<qreal>(BGU::spi(150));
     const auto pw = static_cast<qreal>(pm.width());
     const auto ph = static_cast<qreal>(pm.height());

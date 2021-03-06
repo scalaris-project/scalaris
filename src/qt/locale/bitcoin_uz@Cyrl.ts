@@ -662,8 +662,8 @@
         <translation>Миқдори</translation>
     </message>
     <message>
-        <source>Enter a Blocknet address (e.g. %1)</source>
-        <translation>Blocknet манзилини киритинг (масалан.  %1)</translation>
+        <source>Enter a Scalaris address (e.g. %1)</source>
+        <translation>Scalaris манзилини киритинг (масалан.  %1)</translation>
     </message>
     <message>
         <source>%1 m</source>

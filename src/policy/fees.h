@@ -136,23 +136,23 @@ class CBlockPolicyEstimator
 {
 private:
     /** Track confirm delays up to 5 blocks for short horizon */
-    static constexpr unsigned int SHORT_BLOCK_PERIODS = 5; // Blocknet 5 minutes
+    static constexpr unsigned int SHORT_BLOCK_PERIODS = 5; // Scalaris 5 minutes
     static constexpr unsigned int SHORT_SCALE = 1;
     /** Track confirm delays up to 10 blocks for medium horizon */
-    static constexpr unsigned int MED_BLOCK_PERIODS = 5; // Blocknet 10 minutes
+    static constexpr unsigned int MED_BLOCK_PERIODS = 5; // Scalaris 10 minutes
     static constexpr unsigned int MED_SCALE = 2;
     /** Track confirm delays up to 40 blocks for long horizon */
-    static constexpr unsigned int LONG_BLOCK_PERIODS = 10; // Blocknet 40 minutes
+    static constexpr unsigned int LONG_BLOCK_PERIODS = 10; // Scalaris 40 minutes
     static constexpr unsigned int LONG_SCALE = 4;
     /** Historical estimates that are older than this aren't valid */
-    static const unsigned int OLDEST_ESTIMATE_HISTORY = 7200; // Blocknet 5 days
+    static const unsigned int OLDEST_ESTIMATE_HISTORY = 7200; // Scalaris 5 days
 
     /** Decay of .84 is a half-life of 5 blocks or about 5 minutes */
-    static constexpr double SHORT_DECAY = .84; // Blocknet short decay
+    static constexpr double SHORT_DECAY = .84; // Scalaris short decay
     /** Decay of .9259 is a half-life of 10 blocks or about 10 minutes */
-    static constexpr double MED_DECAY = .9259; // Blocknet medium decay
+    static constexpr double MED_DECAY = .9259; // Scalaris medium decay
     /** Decay of .9825 is a half-life of 40 blocks or about 40 minutes */
-    static constexpr double LONG_DECAY = .9825; // Blocknet long decay
+    static constexpr double LONG_DECAY = .9825; // Scalaris long decay
 
     /** Require greater than 60% of X feerate transactions to be confirmed within Y/2 blocks*/
     static constexpr double HALF_SUCCESS_PCT = .6;

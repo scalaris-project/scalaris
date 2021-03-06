@@ -1913,7 +1913,7 @@
     </message>
     <message>
         <location filename="../guiutil.cpp" line="+108"/>
-        <source>Enter a Blocknet address (e.g. %1)</source>
+        <source>Enter a Scalaris address (e.g. %1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

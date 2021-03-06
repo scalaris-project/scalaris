@@ -306,7 +306,7 @@ bool CBlockTreeDB::LoadBlockIndexGuts(const Consensus::Params& consensusParams, 
                 to = blocks.size();
 
             tg.create_thread([from,to,&blocks,&invalidBlocks,&insertBlockIndex,&mu,&progress,totalprogress,estTotalBlocks,consensusParams,this] {
-                RenameThread("blocknet-blockindex");
+                RenameThread("scalaris-blockindex");
                 // Construct block index objects
                 for (int j = from; j < to; ++j) {
                     auto *diskindex = &blocks[j];

@@ -879,7 +879,7 @@ bool Session::Impl::processTransactionAccepting(XBridgePacketPtr packet) const
             UniValue o(UniValue::VOBJ);
             o.pushKV("orderid", id.GetHex());
             o.pushKV("fee_tx", HexStr(feeTx));
-            xbridge::LogOrderMsg(o, "taker submitted bad BLOCK fee (1)", __FUNCTION__);
+            xbridge::LogOrderMsg(o, "taker submitted bad SCA fee (1)", __FUNCTION__);
             sendRejectTransaction(id, crBadFeeTx);
             return false;
         }
@@ -900,7 +900,7 @@ bool Session::Impl::processTransactionAccepting(XBridgePacketPtr packet) const
             UniValue o(UniValue::VOBJ);
             o.pushKV("orderid", id.GetHex());
             o.pushKV("fee_tx", HexStr(feeTx));
-            xbridge::LogOrderMsg(o, "taker submitted bad BLOCK fee (2)", __FUNCTION__);
+            xbridge::LogOrderMsg(o, "taker submitted bad SCA fee (2)", __FUNCTION__);
             sendRejectTransaction(id, crBadFeeTx);
             return false;
         }
@@ -1262,7 +1262,7 @@ bool Session::Impl::processTransactionAccepting(XBridgePacketPtr packet) const
                     UniValue o(UniValue::VOBJ);
                     o.pushKV("orderid", id.GetHex());
                     o.pushKV("fee_tx", HexStr(feeTx));
-                    xbridge::LogOrderMsg(o, strprintf("unable to process taker BLOCK fee: %s", errstr), __FUNCTION__);
+                    xbridge::LogOrderMsg(o, strprintf("unable to process taker SCA fee: %s", errstr), __FUNCTION__);
                     sendRejectTransaction(id, crBadFeeTx);
                     return false;
                 }

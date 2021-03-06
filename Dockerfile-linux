@@ -32,7 +32,7 @@ ENV HOST=x86_64-pc-linux-gnu
 # Download depends
 RUN mkdir -p $PROJECTDIR \
   && cd $PROJECTDIR \
-  && wget -nv https://s3.us-east-2.amazonaws.com/devbuilds.blocknetprotocol.com/depends/depends-v4.2.0-lin-bionic.tar.gz \
+  && wget -nv https://s3.us-east-2.amazonaws.com/devbuilds.scalarisprotocol.com/depends/depends-v4.2.0-lin-bionic.tar.gz \
   && [ "$(printf '547e4bdabc132b189cc78d6a12093f4476b6a49dc293b8371f2a046f6c3ecdb9 depends-v4.2.0-lin-bionic.tar.gz' | sha256sum -c)" = "depends-v4.2.0-lin-bionic.tar.gz: OK" ] || $(echo "depends checksum failed"; exit 1)
 
 # Copy source files

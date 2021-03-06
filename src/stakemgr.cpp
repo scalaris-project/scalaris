@@ -16,7 +16,7 @@
 std::unique_ptr<StakeMgr> g_staker;
 
 void ThreadStakeMinter() {
-    RenameThread("blocknet-staker");
+    RenameThread("scalaris-staker");
     LogPrintf("Staker has started\n");
     g_staker = MakeUnique<StakeMgr>();
     const auto stakingSkipPeers = gArgs.GetBoolArg("-stakingwithoutpeers", false);

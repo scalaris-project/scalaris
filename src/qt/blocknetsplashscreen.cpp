@@ -39,13 +39,14 @@ BlocknetSplashScreen::BlocknetSplashScreen(interfaces::Node& node, Qt::WindowFla
     QString versionText = QString(tr("Version %1")).arg(QString::fromStdString(FormatFullVersion()));
     QString copyrightTextBtc = QChar(0xA9) + QString(" 2009-2019 ") + QString(tr("The Bitcoin Core developers"));
     QString copyrightTextBlocknet = QChar(0xA9) + QString(" 2014-2020 ") + QString(tr("The Blocknet developers"));
+	QString copyrightTextScalaris = QChar(0xA9) + QString(" 2020-2021 ") + QString(tr("The Scalaris developers"));
     const QString &titleAddText = networkStyle->getTitleAddText();
 
     QString font = QApplication::font().toString();
 
     // load the bitmap for writing some text over it
     bg = new QLabel(this);
-    auto pixmap = QPixmap(":/redesign/images/BlocknetSplash");
+    auto pixmap = QPixmap(":/redesign/images/ScalarisSplash");
     QSize splashSize = QSize(BGU::spi(960), BGU::spi(640));
     pixmap.setDevicePixelRatio(BGU::dpr());
     pixmap = pixmap.scaled(static_cast<int>(splashSize.width()*pixmap.devicePixelRatio()),
@@ -57,6 +58,7 @@ BlocknetSplashScreen::BlocknetSplashScreen(interfaces::Node& node, Qt::WindowFla
     auto *versionLbl = new QLabel(versionText);
     auto *btcCopyLbl = new QLabel(copyrightTextBtc);
     auto *blockCopyLbl = new QLabel(copyrightTextBlocknet);
+    auto *scaCopyLbl = new QLabel(copyrightTextScalaris);
     auto *networkLbl = new QLabel(titleAddText);
     msg = new QLabel;
     msg->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
@@ -65,6 +67,7 @@ BlocknetSplashScreen::BlocknetSplashScreen(interfaces::Node& node, Qt::WindowFla
     versionLbl->setStyleSheet(css);
     btcCopyLbl->setStyleSheet(css);
     blockCopyLbl->setStyleSheet(css);
+	scaCopyLbl->setStyleSheet(css);
     networkLbl->setStyleSheet(css + " font-weight: bold;");
     msg->setStyleSheet("font-size: 11pt; color: white; font-family: \"Roboto\"; background-color: transparent;");
 
@@ -72,6 +75,7 @@ BlocknetSplashScreen::BlocknetSplashScreen(interfaces::Node& node, Qt::WindowFla
     layout->addWidget(versionLbl);
     layout->addWidget(btcCopyLbl);
     layout->addWidget(blockCopyLbl);
+	layout->addWidget(scaCopyLbl);
     layout->addWidget(networkLbl, 0, Qt::AlignRight);
     layout->addWidget(msg, 0, Qt::AlignCenter);
 

@@ -709,8 +709,8 @@
 <context>
     <name>QObject</name>
     <message>
-        <source>Enter a Blocknet address (e.g. %1)</source>
-        <translation>Blocknet adresinizi girin (örneğin %1)</translation>
+        <source>Enter a Scalaris address (e.g. %1)</source>
+        <translation>Scalaris adresinizi girin (örneğin %1)</translation>
     </message>
     <message>
         <source>N/A</source>

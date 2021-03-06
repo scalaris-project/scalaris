@@ -74,7 +74,7 @@
 // Application startup time (used for uptime calculation)
 const int64_t nStartupTime = GetTime();
 
-const char * const BITCOIN_CONF_FILENAME = "blocknet.conf";
+const char * const BITCOIN_CONF_FILENAME = "scalaris.conf";
 
 ArgsManager gArgs;
 
@@ -671,7 +671,7 @@ static std::string FormatException(const std::exception* pex, const char* pszThr
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(nullptr, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "blocknet";
+    const char* pszModule = "scalaris";
 #endif
     if (pex)
         return strprintf(
@@ -693,10 +693,10 @@ fs::path GetDefaultDataDir()
     // Windows < Vista: C:\Documents and Settings\Username\Application Data\Blocknet
     // Windows >= Vista: C:\Users\Username\AppData\Roaming\Blocknet
     // Mac: ~/Library/Application Support/Blocknet
-    // Unix: ~/.blocknet
+    // Unix: ~/.scalaris
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "Blocknet";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "Scalaris";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -706,10 +706,10 @@ fs::path GetDefaultDataDir()
         pathRet = fs::path(pszHome);
 #ifdef MAC_OSX
     // Mac
-    return pathRet / "Library/Application Support/Blocknet";
+    return pathRet / "Library/Application Support/Scalaris";
 #else
     // Unix
-    return pathRet / ".blocknet";
+    return pathRet / ".scalaris";
 #endif
 #endif
 }
@@ -719,10 +719,10 @@ fs::path GetDefaultDataDirLegacy()
     // Windows < Vista: C:\Documents and Settings\Username\Application Data\BlocknetDX
     // Windows >= Vista: C:\Users\Username\AppData\Roaming\BlocknetDX
     // Mac: ~/Library/Application Support/BlocknetDX
-    // Unix: ~/.blocknetdx
+    // Unix: ~/.scalarisdx
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "BlocknetDX";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "ScalarisDX";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -732,10 +732,10 @@ fs::path GetDefaultDataDirLegacy()
         pathRet = fs::path(pszHome);
 #ifdef MAC_OSX
     // Mac
-    return pathRet / "Library/Application Support/BlocknetDX";
+    return pathRet / "Library/Application Support/ScalarisDX";
 #else
     // Unix
-    return pathRet / ".blocknetdx";
+    return pathRet / ".scalarisdx";
 #endif
 #endif
 }

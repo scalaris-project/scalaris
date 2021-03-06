@@ -105,7 +105,7 @@ void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent)
     widget->setFont(fixedPitchFont());
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a Blocknet address (e.g. %1)").arg(
+    widget->setPlaceholderText(QObject::tr("Enter a Scalaris address (e.g. %1)").arg(
         QString::fromStdString(DummyAddress(Params()))));
     widget->setValidator(new BitcoinAddressEntryValidator(parent));
     widget->setCheckValidator(new BitcoinAddressCheckValidator(parent));
@@ -113,8 +113,8 @@ void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent)
 
 bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
 {
-    // return if URI is not valid or is no blocknet: URI
-    if(!uri.isValid() || uri.scheme() != QString("blocknet"))
+    // return if URI is not valid or is no scalaris: URI
+    if(!uri.isValid() || uri.scheme() != QString("scalaris"))
         return false;
 
     SendCoinsRecipient rv;
@@ -176,7 +176,7 @@ bool parseBitcoinURI(QString uri, SendCoinsRecipient *out)
 
 QString formatBitcoinURI(const SendCoinsRecipient &info)
 {
-    QString ret = QString("blocknet:%1").arg(info.address);
+    QString ret = QString("scalaris:%1").arg(info.address);
     int paramCount = 0;
 
     if (info.amount)
@@ -392,7 +392,7 @@ bool openBitcoinConf()
 
     configFile.close();
 
-    /* Open blocknet.conf with the associated application */
+    /* Open scalaris.conf with the associated application */
     bool res = QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
 #ifdef Q_OS_MAC
     // Workaround for macOS-specific behavior; see #15409.
@@ -548,10 +548,10 @@ fs::path static StartupShortcutPath()
 {
     std::string chain = gArgs.GetChainName();
     if (chain == CBaseChainParams::MAIN)
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "Blocknet.lnk";
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "Scalaris.lnk";
     if (chain == CBaseChainParams::TESTNET) // Remove this special case when CBaseChainParams::TESTNET = "testnet4"
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "Blocknet (testnet).lnk";
-    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("Blocknet (%s).lnk", chain);
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "Scalaris (testnet).lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("Scalaris (%s).lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
@@ -631,8 +631,8 @@ fs::path static GetAutostartFilePath()
 {
     std::string chain = gArgs.GetChainName();
     if (chain == CBaseChainParams::MAIN)
-        return GetAutostartDir() / "blocknet.desktop";
-    return GetAutostartDir() / strprintf("blocknet-%s.lnk", chain);
+        return GetAutostartDir() / "scalaris.desktop";
+    return GetAutostartDir() / strprintf("scalaris-%s.lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
@@ -672,13 +672,13 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         if (!optionFile.good())
             return false;
         std::string chain = gArgs.GetChainName();
-        // Write a blocknet.desktop file to the autostart directory:
+        // Write a scalaris.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
         if (chain == CBaseChainParams::MAIN)
-            optionFile << "Name=Blocknet\n";
+            optionFile << "Name=Scalaris\n";
         else
-            optionFile << strprintf("Name=Blocknet (%s)\n", chain);
+            optionFile << strprintf("Name=Scalaris (%s)\n", chain);
         optionFile << "Exec=" << pszExePath << strprintf(" -min -testnet=%d -regtest=%d\n", gArgs.GetBoolArg("-testnet", false), gArgs.GetBoolArg("-regtest", false));
         optionFile << "Terminal=false\n";
         optionFile << "Hidden=false\n";

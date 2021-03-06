@@ -723,7 +723,7 @@ std::string XRouterClient::xrouterCall(enum XRouterCommand command, std::string 
                                                                        : walletCommandKey(service, commandStr, true)); // spv wallet
             try {
                 tg.create_thread([uuid,addr,snode,tls,fqUrl,params,feetx,timeout,this]() {
-                    RenameThread("blocknet-xrclientrequest");
+                    RenameThread("scalaris-xrclientrequest");
                     if (ShutdownRequested())
                         return;
 

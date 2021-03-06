@@ -258,7 +258,7 @@ void BlocknetWallet::onSendToAddress(const QString &address) {
 
 void BlocknetWallet::onRescanRequest(const std::string & walletName) {
     tg.create_thread([walletName]() {
-        RenameThread("blocknet-rescan");
+        RenameThread("scalaris-rescan");
         auto ws = GetWallets();
         CWallet *pwallet = nullptr;
         for (auto & w : ws) {

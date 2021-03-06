@@ -41,7 +41,7 @@ BOOST_FIXTURE_TEST_CASE(xrouter_tests_waitforservice, XRouterTestClientTestnet) 
 
 BOOST_FIXTURE_TEST_CASE(xrouter_tests_testnet_xrcalls, XRouterTestClientTestnet) {
     BOOST_REQUIRE_MESSAGE(client->start(), "Failed to start xrouter client");
-    BOOST_REQUIRE_MESSAGE(client->waitForService(5000, "xr::BLOCK"), "Services not found on testnet");
+    BOOST_REQUIRE_MESSAGE(client->waitForService(5000, "xr::SCA"), "Services not found on testnet");
     BOOST_REQUIRE_MESSAGE(!client->getServiceNodes().empty(), "Service node list should not be empty");
 
     const std::string testnetBlock1Hash = "1e1a89b239727807b0b7ee0ca465945b33cfebb37286d570e502163b80c60ff5";
@@ -51,7 +51,7 @@ BOOST_FIXTURE_TEST_CASE(xrouter_tests_testnet_xrcalls, XRouterTestClientTestnet)
     const std::string testnetBlock1TxRaw = "01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff03510101ffffffff010088526a740000001976a9143002c6d1bbb62ad87bfb32fdd6a4ecf89abc818988ac00000000";
 
     { // getBlockCount
-        UniValue res = client->getBlockCount("BLOCK");
+        UniValue res = client->getBlockCount("SCA");
         auto replynull = find_value(res, "reply").isNull();
         BOOST_CHECK_MESSAGE(!replynull, "getBlockCount reply is invalid");
         if (!replynull)
@@ -61,7 +61,7 @@ BOOST_FIXTURE_TEST_CASE(xrouter_tests_testnet_xrcalls, XRouterTestClientTestnet)
     }
 
     { // getBlockCount with namespace
-        UniValue res = client->getBlockCount("xr::BLOCK");
+        UniValue res = client->getBlockCount("xr::SCA");
         auto replynull = find_value(res, "reply").isNull();
         BOOST_CHECK_MESSAGE(!replynull, "getBlockCount reply is invalid");
         if (!replynull)
@@ -71,7 +71,7 @@ BOOST_FIXTURE_TEST_CASE(xrouter_tests_testnet_xrcalls, XRouterTestClientTestnet)
     }
 
     { // getBlockHash
-        UniValue res = client->getBlockHash("BLOCK", 1);
+        UniValue res = client->getBlockHash("SCA", 1);
         auto replynull = find_value(res, "reply").isNull();
         BOOST_CHECK_MESSAGE(!replynull, "getBlockHash reply is invalid");
         if (!replynull) {
@@ -81,7 +81,7 @@ BOOST_FIXTURE_TEST_CASE(xrouter_tests_testnet_xrcalls, XRouterTestClientTestnet)
         BOOST_CHECK_MESSAGE(!find_value(res, "uuid").isNull(), "getBlockHash uuid is invalid");
         BOOST_CHECK_MESSAGE(find_value(res, "error").isNull(), "getBlockHash has error");
         // TODO Blocknet libxrouter hex number
-//        res = client->getBlockHash("BLOCK", "0x1");
+//        res = client->getBlockHash("SCA", "0x1");
 //        replynull = find_value(res, "reply").isNull();
 //        BOOST_CHECK_MESSAGE(!replynull, "getBlockHash reply is invalid");
 //        if (!replynull) {
@@ -94,7 +94,7 @@ BOOST_FIXTURE_TEST_CASE(xrouter_tests_testnet_xrcalls, XRouterTestClientTestnet)
 
     { // getBlock
         // TODO Blocknet XRouter int block
-//        UniValue res = client->getBlock("BLOCK", 1);
+//        UniValue res = client->getBlock("SCA", 1);
 //        auto replynull = find_value(res, "reply").isNull();
 //        BOOST_CHECK_MESSAGE(!replynull, "getBlock reply is invalid");
 //        if (!replynull) {
@@ -105,7 +105,7 @@ BOOST_FIXTURE_TEST_CASE(xrouter_tests_testnet_xrcalls, XRouterTestClientTestnet)
 //        BOOST_CHECK_MESSAGE(find_value(res, "error").isNull(), "getBlock has error");
 
         // string block
-        auto res = client->getBlock("BLOCK", testnetBlock1Hash);
+        auto res = client->getBlock("SCA", testnetBlock1Hash);
         auto replynull = find_value(res, "reply").isNull();
         BOOST_CHECK_MESSAGE(!replynull, "getBlock reply is invalid");
         if (!replynull) {
@@ -118,7 +118,7 @@ BOOST_FIXTURE_TEST_CASE(xrouter_tests_testnet_xrcalls, XRouterTestClientTestnet)
 
     { // getBlocks
         // TODO Blocknet XRouter int block numbers
-//        UniValue res = client->getBlocks("BLOCK", {1, 2});
+//        UniValue res = client->getBlocks("SCA", {1, 2});
 //        auto replynull = find_value(res, "reply").isNull();
 //        BOOST_CHECK_MESSAGE(!replynull, "getBlocks reply is invalid");
 //        if (!replynull) {
@@ -130,7 +130,7 @@ BOOST_FIXTURE_TEST_CASE(xrouter_tests_testnet_xrcalls, XRouterTestClientTestnet)
 //        BOOST_CHECK_MESSAGE(find_value(res, "error").isNull(), "getBlocks has error");
 
         // string block hashes
-        auto res = client->getBlocks("BLOCK", {testnetBlock1Hash, testnetBlock2Hash});
+        auto res = client->getBlocks("SCA", {testnetBlock1Hash, testnetBlock2Hash});
         auto replynull = find_value(res, "reply").isNull();
         BOOST_CHECK_MESSAGE(!replynull, "getBlocks reply is invalid");
         if (!replynull) {
@@ -143,7 +143,7 @@ BOOST_FIXTURE_TEST_CASE(xrouter_tests_testnet_xrcalls, XRouterTestClientTestnet)
     }
 
     { // getTransaction
-        auto res = client->getTransaction("BLOCK", testnetBlock1Tx);
+        auto res = client->getTransaction("SCA", testnetBlock1Tx);
         auto replynull = find_value(res, "reply").isNull();
         BOOST_CHECK_MESSAGE(!replynull, "getTransaction reply is invalid");
         if (!replynull) {
@@ -155,7 +155,7 @@ BOOST_FIXTURE_TEST_CASE(xrouter_tests_testnet_xrcalls, XRouterTestClientTestnet)
     }
 
     { // getTransactions
-        UniValue res = client->getTransactions("BLOCK", {testnetBlock1Tx, testnetBlock2Tx});
+        UniValue res = client->getTransactions("SCA", {testnetBlock1Tx, testnetBlock2Tx});
         auto replynull = find_value(res, "reply").isNull();
         BOOST_CHECK_MESSAGE(!replynull, "getTransactions reply is invalid");
         if (!replynull) {
@@ -168,7 +168,7 @@ BOOST_FIXTURE_TEST_CASE(xrouter_tests_testnet_xrcalls, XRouterTestClientTestnet)
     }
 
     { // decodeTransaction
-        auto res = client->decodeTransaction("BLOCK", testnetBlock1TxRaw);
+        auto res = client->decodeTransaction("SCA", testnetBlock1TxRaw);
         auto replynull = find_value(res, "reply").isNull();
         BOOST_CHECK_MESSAGE(!replynull, "decodeTransaction reply is invalid");
         if (!replynull) {
@@ -180,7 +180,7 @@ BOOST_FIXTURE_TEST_CASE(xrouter_tests_testnet_xrcalls, XRouterTestClientTestnet)
     }
 
     { // sendTransaction
-        auto res = client->sendTransaction("BLOCK", testnetBlock1TxRaw);
+        auto res = client->sendTransaction("SCA", testnetBlock1TxRaw);
         BOOST_CHECK_MESSAGE(!find_value(res, "uuid").isNull(), "sendTransaction uuid is invalid");
         BOOST_CHECK_MESSAGE(!find_value(res, "error").isNull(), "sendTransaction expecting error since tx has already confirmed");
     }
@@ -190,7 +190,7 @@ BOOST_FIXTURE_TEST_CASE(xrouter_tests_testnet_xrcalls, XRouterTestClientTestnet)
 
 BOOST_FIXTURE_TEST_CASE(xrouter_tests_testnet_xrservicecalls, XRouterTestClientTestnet) {
     BOOST_REQUIRE_MESSAGE(client->start(), "Failed to start xrouter client");
-    BOOST_REQUIRE_MESSAGE(client->waitForService(5000, {{"xr::BLOCK",1},{"xrs::block_getblockhash",1}}), "Services not found on testnet");
+    BOOST_REQUIRE_MESSAGE(client->waitForService(5000, {{"xr::SCA",1},{"xrs::block_getblockhash",1}}), "Services not found on testnet");
     BOOST_REQUIRE_MESSAGE(!client->getServiceNodes().empty(), "Service node list should not be empty");
 
     { // block_getblockhash
@@ -212,11 +212,11 @@ BOOST_FIXTURE_TEST_CASE(xrouter_tests_testnet_xrservicecalls, XRouterTestClientT
 
 /*BOOST_FIXTURE_TEST_CASE(xrouter_tests_mainnet_xrcalls, XRouterTestClientMainnet) {
         BOOST_REQUIRE_MESSAGE(client->start(), "Failed to start xrouter client");
-        BOOST_REQUIRE_MESSAGE(client->waitForService(10000, "xr::BLOCK"), "Services not found on mainnet");
+        BOOST_REQUIRE_MESSAGE(client->waitForService(10000, "xr::SCA"), "Services not found on mainnet");
         BOOST_REQUIRE_MESSAGE(!client->getServiceNodes().empty(), "Service node list should not be empty");
 
         { // getBlockCount
-            UniValue res = client->getBlockCount("BLOCK");
+            UniValue res = client->getBlockCount("SCA");
             auto replynull = find_value(res, "reply").isNull();
             BOOST_CHECK_MESSAGE(!replynull, "getBlockCount reply is invalid");
             if (!replynull)
@@ -226,7 +226,7 @@ BOOST_FIXTURE_TEST_CASE(xrouter_tests_testnet_xrservicecalls, XRouterTestClientT
         }
 
         { // getBlockHash
-            UniValue res = client->getBlockHash("BLOCK", 1);
+            UniValue res = client->getBlockHash("SCA", 1);
             auto replynull = find_value(res, "reply").isNull();
             BOOST_CHECK_MESSAGE(!replynull, "getBlockHash reply is invalid");
             if (!replynull) {
@@ -236,7 +236,7 @@ BOOST_FIXTURE_TEST_CASE(xrouter_tests_testnet_xrservicecalls, XRouterTestClientT
             BOOST_CHECK_MESSAGE(!find_value(res, "uuid").isNull(), "getBlockHash uuid is invalid");
             BOOST_CHECK_MESSAGE(find_value(res, "error").isNull(), "getBlockHash has error");
             // hex number
-//        res = client->getBlockHash("BLOCK", "0x01");
+//        res = client->getBlockHash("SCA", "0x01");
 //        replynull = find_value(res, "reply").isNull();
 //        BOOST_CHECK_MESSAGE(!replynull, "getBlockHash reply is invalid");
 //        if (!replynull) {

@@ -1498,8 +1498,8 @@
         <translation>Amount</translation>
     </message>
     <message>
-        <source>Enter a Blocknet address (e.g. %1)</source>
-        <translation>Enter a Blocknet address (e.g. %1)</translation>
+        <source>Enter a Scalaris address (e.g. %1)</source>
+        <translation>Enter a Scalaris address (e.g. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>

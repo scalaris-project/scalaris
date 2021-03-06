@@ -34,7 +34,7 @@ ENV HOST=x86_64-apple-darwin14
 # Download depends
 RUN mkdir -p $PROJECTDIR \
   && cd $PROJECTDIR \
-  && wget -nv https://s3.us-east-2.amazonaws.com/devbuilds.blocknetprotocol.com/depends/depends-v4.2.0-mac-bionic.tar.gz \
+  && wget -nv https://s3.us-east-2.amazonaws.com/devbuilds.scalarisprotocol.com/depends/depends-v4.2.0-mac-bionic.tar.gz \
   && [ "$(printf 'f1c92dbbcc4f2e05e5965a7031993e8e0f6e38fee987f30e98ae9a65c7d255b9 depends-v4.2.0-mac-bionic.tar.gz' | sha256sum -c)" = "depends-v4.2.0-mac-bionic.tar.gz: OK" ] || $(echo "depends checksum failed"; exit 1)
 
 # Copy source files
@@ -51,7 +51,7 @@ RUN mkdir -p $DISTDIR \
   && make clean \
   && echo "Building with cores: $ecores" \
   && make -j$ecores \
-  && mkdir -p $DISTDIR/bin && llvm-dsymutil-6.0 src/qt/blocknet-qt -o $DISTDIR/bin/blocknet-qt.dSYM \
+  && mkdir -p $DISTDIR/bin && llvm-dsymutil-6.0 src/qt/scalaris-qt -o $DISTDIR/bin/scalaris-qt.dSYM \
   && make install DESTDIR=$DISTDIR \
   && make clean
 

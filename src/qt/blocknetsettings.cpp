@@ -52,7 +52,7 @@ BlocknetSettings::BlocknetSettings(interfaces::Node & node, QWidget *parent) : Q
     aboutBox->setLayout(aboutLayout);
 
     aboutCoreLblBtn = new BlocknetLabelBtn;
-    aboutCoreLblBtn->setText(tr("About Blocknet"));
+    aboutCoreLblBtn->setText(tr("About Scalaris"));
     aboutQtLblBtn = new BlocknetLabelBtn;
     aboutQtLblBtn->setText(tr("About Qt"));
 
@@ -72,7 +72,7 @@ BlocknetSettings::BlocknetSettings(interfaces::Node & node, QWidget *parent) : Q
     generalLbl = new QLabel(tr("General"));
     generalLbl->setObjectName("h2");
 
-    startWalletOnLoginCb = new BlocknetCheckBox(tr("Start Blocknet on system login"));
+    startWalletOnLoginCb = new BlocknetCheckBox(tr("Start Scalaris on system login"));
     startWalletOnLoginCb->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
 
     auto *generalGrid = new QFrame;

@@ -29,16 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>Blocknet</string>
+  <string>Scalaris</string>
   
   <key>CFBundleName</key>
-  <string>Blocknet</string>
+  <string>Scalaris</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>co.blocknet.Blocknet4</string>
+  <string>co.scalaris.Scalaris4</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -46,7 +46,7 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>co.blocknet.BlocknetPayment</string>
+      <string>co.scalaris.ScalarisPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
         <string>bitcoin</string>
@@ -58,9 +58,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>co.blocknet.paymentrequest</string>
+      <string>co.scalaris.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>Blocknet payment request</string>
+      <string>Scalaris payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -71,7 +71,7 @@
         <string>application/x-bitcoin-payment-request</string>
         <key>public.filename-extension</key>
         <array>
-          <string>blocknetpaymentrequest</string>
+          <string>scalarispaymentrequest</string>
         </array>
       </dict>
     </dict>
@@ -84,7 +84,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>co.blocknet.paymentrequest</string>
+        <string>co.scalaris.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>

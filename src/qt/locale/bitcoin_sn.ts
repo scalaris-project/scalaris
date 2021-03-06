@@ -182,8 +182,8 @@
         <translation>Marii </translation>
     </message>
     <message>
-        <source>Enter a Blocknet address (e.g. %1)</source>
-        <translation>Nyora kero ye Blocknet (sekuti %1)</translation>
+        <source>Enter a Scalaris address (e.g. %1)</source>
+        <translation>Nyora kero ye Scalaris (sekuti %1)</translation>
     </message>
     <message>
         <source>%1 d</source>

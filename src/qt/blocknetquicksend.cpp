@@ -45,7 +45,7 @@ BlocknetQuickSend::BlocknetQuickSend(WalletModel *w, QWidget *parent) : QFrame(p
     addrBox->setLayout(addrBoxLayout);
     addressTi = new BlocknetLineEdit(BGU::spi(400));
     addressTi->setObjectName("address");
-    addressTi->setPlaceholderText(tr("Enter Blocknet Address..."));
+    addressTi->setPlaceholderText(tr("Enter Scalaris Address..."));
     addressTi->setFocusPolicy(Qt::FocusPolicy::StrongFocus);
     addressTi->setValidator(new QRegExpValidator(QRegExp("[a-zA-Z0-9]{33,35}"), this));
     auto *addAddressBtn = new BlocknetIconBtn(QString(), ":/redesign/QuickActions/AddressBookIcon.png");

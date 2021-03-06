@@ -1386,7 +1386,7 @@
         <translation>مبلغ</translation>
     </message>
     <message>
-        <source>Enter a Blocknet address (e.g. %1)</source>
+        <source>Enter a Scalaris address (e.g. %1)</source>
         <translation>ادخل عنوان محفطة البتكوين (مثال %1)</translation>
     </message>
     <message>

@@ -1497,8 +1497,8 @@
         <translation>Cantidad</translation>
     </message>
     <message>
-        <source>Enter a Blocknet address (e.g. %1)</source>
-        <translation>Introducir una dirección Blocknet (p. ej. %1)</translation>
+        <source>Enter a Scalaris address (e.g. %1)</source>
+        <translation>Introducir una dirección Scalaris (p. ej. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>

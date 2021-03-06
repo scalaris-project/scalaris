@@ -487,7 +487,7 @@ bool App::openConnections(enum XRouterCommand command, const std::string & servi
             auto node = nodec[snodeAddr];
 
             tg.create_thread([node,s,snodeAddr,needConnectionHaveConfig,&lu,&conns,&fetchConfig,&connect]() {
-                RenameThread("blocknet-xrconnection");
+                RenameThread("scalaris-xrconnection");
                 boost::this_thread::interruption_point();
                 if (needConnectionHaveConfig) {
                     { LOCK(lu); conns.insert(snodeAddr); }
@@ -953,7 +953,7 @@ void App::onMessageReceived(CNode* node, const std::vector<unsigned char> & mess
 
     // Handle the xrouter request
     requestHandlers.create_thread([this, node, message]() {
-        RenameThread("blocknet-xrrequest");
+        RenameThread("scalaris-xrrequest");
         boost::this_thread::interruption_point();
         CValidationState state;
 
@@ -1048,7 +1048,7 @@ std::string App::xrouterCall(enum XRouterCommand command, std::string & uuidRet,
 
     try {
         if (!isEnabled() || !isReady())
-            throw XRouterError("XRouter is turned off. Please set 'xrouter=1' in blocknet.conf", xrouter::UNAUTHORIZED);
+            throw XRouterError("XRouter is turned off. Please set 'xrouter=1' in scalaris.conf", xrouter::UNAUTHORIZED);
 
         std::string cleaned;
         if (!removeNamespace(fqServiceName, cleaned))
@@ -1205,7 +1205,7 @@ std::string App::xrouterCall(enum XRouterCommand command, std::string & uuidRet,
             addQuery(uuid, addr);
             queryMgr.addQuery(uuid, addr);
 
-            if (mapSelectedNodes.count(addr)) { // query via the blocknet network
+            if (mapSelectedNodes.count(addr)) { // query via the scalaris network
                 auto pnode = mapSelectedNodes[addr];
                 // Send packet to xrouter node
                 XRouterPacket packet(command, uuid);
@@ -1224,7 +1224,7 @@ std::string App::xrouterCall(enum XRouterCommand command, std::string & uuidRet,
                                                        : walletCommandKey(service, commandStr, true)); // spv wallet
                 try {
                     tg.create_thread([uuid,addr,snode,tls,fqUrl,params,feetx,timeout,&clientKey,this]() {
-                        RenameThread("blocknet-xrclientrequest");
+                        RenameThread("scalaris-xrclientrequest");
                         if (ShutdownRequested())
                             return;
 
@@ -1625,7 +1625,7 @@ std::map<NodeAddr, std::pair<XRouterSettingsPtr, sn::ServiceNode::Tier>> App::xr
     if (!xrsplit(fqService, xrdelimiter, nparts))
         throw XRouterError("Bad service name, acceptable characters [a-z A-Z 0-9 $], sample format: xrs::ExampleServiceName123", BAD_REQUEST);
 
-    const auto msg = "Missing top-level namespace (xr:: or xrs::) Example xr::BLOCK or xrs::CustomServiceName";
+    const auto msg = "Missing top-level namespace (xr:: or xrs::) Example xr::SCA or xrs::CustomServiceName";
     if (nparts.size() <= 1)
         throw XRouterError(msg, BAD_REQUEST);
 

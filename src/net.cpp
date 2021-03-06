@@ -1445,7 +1445,7 @@ static void ThreadMapPort()
             }
         }
 
-        std::string strDesc = "Blocknet " + FormatFullVersion();
+        std::string strDesc = "Scalaris " + FormatFullVersion();
 
         do {
 #ifndef UPNPDISCOVER_SUCCESS

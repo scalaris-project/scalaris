@@ -26,8 +26,8 @@ static UniValue createproposal(const JSONRPCRequest& request)
                 {
                     {"name", RPCArg::Type::STR, RPCArg::Optional::NO, R"(Proposal name, only alpha number characters are accepted (example: "My Proposal 1" or "My_Proposal-1"))"},
                     {"superblock", RPCArg::Type::NUM, RPCArg::Optional::NO, strprintf("Block number of Superblock. Specify 0 to automatically submit for the next Superblock %d", gov::NextSuperblock(Params().GetConsensus()))},
-                    {"amount", RPCArg::Type::NUM, RPCArg::Optional::NO, "Amount of BLOCK being requested in the proposal"},
-                    {"address", RPCArg::Type::STR, RPCArg::Optional::NO, "Blocknet payment address"},
+                    {"amount", RPCArg::Type::NUM, RPCArg::Optional::NO, "Amount of SCA being requested in the proposal"},
+                    {"address", RPCArg::Type::STR, RPCArg::Optional::NO, "Scalaris payment address"},
                     {"url", RPCArg::Type::STR, RPCArg::Optional::OMITTED, "Url where voters can read more details"},
                     {"description", RPCArg::Type::STR, RPCArg::Optional::OMITTED, "Brief description. Note, if description is too long the proposal submission will fail"},
                 },
@@ -37,8 +37,8 @@ static UniValue createproposal(const JSONRPCRequest& request)
                 "  \"txid\":\"xxxx\",                      (string) Hex string of the proposal transaction hash\n"
                 "  \"name\": \"proposal name\",            (string) Service node name\n"
                 "  \"superblock\": n,                      (numeric) Upcoming Superblock to receive payment. Obtain the next Superblock with \"nextsuperblock\" rpc call.\n"
-                "  \"amount\": n,                          (numeric) Amount of BLOCK being requested in the proposal\n"
-                "  \"address\":\"blocknet address\",       (string) Blocknet payment address\n"
+                "  \"amount\": n,                          (numeric) Amount of SCA being requested in the proposal\n"
+                "  \"address\":\"scalaris address\",       (string) Scalaris payment address\n"
                 "  \"url\":\"https://forum.scalaris.info\",  (string) Url where voters can read more details\n"
                 "  \"description\":\"xxxx\"                (string) Brief description. Note, if description is too long the proposal submission will fail\n"
                 "}\n"
@@ -114,8 +114,8 @@ static UniValue listproposals(const JSONRPCRequest& request)
                 "  \"hash\":\"xxxx\",                (string) Hex string of the proposal hash\n"
                 "  \"name\": \"proposal name\",      (string) Service node name\n"
                 "  \"superblock\": n,                (numeric) Upcoming Superblock to receive payment. Obtain the next Superblock with \"nextsuperblock\" rpc call.\n"
-                "  \"amount\": n,                    (numeric) Amount of BLOCK being requested in the proposal\n"
-                "  \"address\":\"blocknet address\", (string) Blocknet payment address\n"
+                "  \"amount\": n,                    (numeric) Amount of SCA being requested in the proposal\n"
+                "  \"address\":\"scalaris address\", (string) Scalaris payment address\n"
                 "  \"url\":\"xxxx\",                 (string) Url where voters can read more details\n"
                 "  \"description\":\"xxxx\",         (string) Brief description. Note, if description is too long the proposal submission will fail\n"
                 "  \"votes_yes\": n,                 (numeric) All yes votes\n"
@@ -192,7 +192,7 @@ static UniValue vote(const JSONRPCRequest& request)
         throw std::runtime_error(
             RPCHelpMan{"vote",
                 "\nVote on a proposal. Specify the proposal's hash and the vote type to cast the vote. This will\n"
-                "attempt to cast as many votes as the wallet allows, which is based on the amount of BLOCK in the\n"
+                "attempt to cast as many votes as the wallet allows, which is based on the amount of SCA in the\n"
                 "wallet.",
                 {
                     {"proposal", RPCArg::Type::STR_HEX, RPCArg::Optional::NO, "Proposal hash to cast votes for"},
@@ -204,8 +204,8 @@ static UniValue vote(const JSONRPCRequest& request)
                 "  \"hash\":\"xxxx\",                      (string) Hex string of the proposal hash\n"
                 "  \"name\": \"proposal name\",            (string) Service node name\n"
                 "  \"superblock\": n,                      (numeric) Upcoming Superblock to receive payment. Obtain the next Superblock with \"nextsuperblock\" rpc call.\n"
-                "  \"amount\": n,                          (numeric) Amount of BLOCK being requested in the proposal\n"
-                "  \"address\":\"blocknet address\",       (string) Blocknet payment address\n"
+                "  \"amount\": n,                          (numeric) Amount of SCA being requested in the proposal\n"
+                "  \"address\":\"scalaris address\",       (string) Scalaris payment address\n"
                 "  \"url\":\"https://forum.scalaris.info\",  (string) Url where voters can read more details\n"
                 "  \"description\":\"xxxx\"                (string) Brief description. Note, if description is too long the proposal submission will fail\n"
                 "  \"vote\": \"vote cast\",                (string) Vote that was cast\n"
@@ -279,7 +279,7 @@ static UniValue proposalfee(const JSONRPCRequest& request)
     if (request.fHelp || !request.params.empty())
         throw std::runtime_error(
             RPCHelpMan{"proposalfee",
-                "\nFee in BLOCK for proposal submissions.\n",
+                "\nFee in SCA for proposal submissions.\n",
                 {},
                 RPCResult{
                 "10\n"

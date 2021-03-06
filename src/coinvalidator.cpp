@@ -101,7 +101,7 @@ bool CoinValidator::RedeemAddressVerified(std::vector<RedeemData> &exploited,
     // Allow spending inputs if the total redeem amount spent is greater than or equal to exploited amount
     bool success = totalRedeem >= totalExploited;
     if (!success && totalRedeem > 0)
-        LogPrintf("Coin Validator: Failed to Redeem: minimum amount required for this transaction (not including network fee): %f BLOCK\n", (double)totalExploited/(double)COIN);
+        LogPrintf("Coin Validator: Failed to Redeem: minimum amount required for this transaction (not including network fee): %f SCA\n", (double)totalExploited/(double)COIN);
     return success;
 }
 

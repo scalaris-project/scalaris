@@ -1499,8 +1499,8 @@ Försök igen.</translation>
         <translation>Belopp</translation>
     </message>
     <message>
-        <source>Enter a Blocknet address (e.g. %1)</source>
-        <translation>Ange en Blocknet-adress (t.ex. %1)</translation>
+        <source>Enter a Scalaris address (e.g. %1)</source>
+        <translation>Ange en Scalaris-adress (t.ex. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>

@@ -802,7 +802,7 @@ void SendCoinsDialog::coinControlChangeEdited(const QString& text)
         }
         else if (!IsValidDestination(dest)) // Invalid address
         {
-            ui->labelCoinControlChangeLabel->setText(tr("Warning: Invalid Blocknet address"));
+            ui->labelCoinControlChangeLabel->setText(tr("Warning: Invalid Scalaris address"));
         }
         else // Valid address
         {

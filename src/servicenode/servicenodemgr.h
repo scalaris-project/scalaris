@@ -826,7 +826,7 @@ protected:
                "#   - tier can be either SPV or OPEN\n"
                "#   - snodekey must be a valid base58 encoded private key\n"
                "#   - address must be a valid base58 encoded public key that contains the service node collateral\n"
-               "# SPV tier requires 5000 BLOCK collateral and an associated BLOCK address and can charge fees for services\n"
+               "# SPV tier requires 2500 SCA collateral and an associated SCA address and can charge fees for services\n"
                "# OPEN tier doesn't require any collateral, can't charge fees, and can only support XCloud plugins\n"
                "# Example: dev OPEN 6BeBjrnd4DP5rEvUtxBQVu1DTPXUn6mCY5kPB2DWiy9CwEB2qh1\n"
                "# Example: xrouter SPV 6B4VvHTn6BbHM3DRsf6M3Sk3jLbgzm1vp5jNe9ZYZocSyRDx69d Bj2w9gHtGp4FbVdR19tJZ9UHwWQhDXxGCM\n";

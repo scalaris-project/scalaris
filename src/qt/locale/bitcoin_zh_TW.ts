@@ -1466,8 +1466,8 @@
         <translation>金額</translation>
     </message>
     <message>
-        <source>Enter a Blocknet address (e.g. %1)</source>
-        <translation>輸入 Blocknet 位址 (比如說 %1)</translation>
+        <source>Enter a Scalaris address (e.g. %1)</source>
+        <translation>輸入 Scalaris 位址 (比如說 %1)</translation>
     </message>
     <message>
         <source>%1 d</source>

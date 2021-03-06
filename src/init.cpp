@@ -108,7 +108,7 @@ static const char* FEE_ESTIMATES_FILENAME="fee_estimates.dat";
 /**
  * The PID file facilities.
  */
-static const char* BITCOIN_PID_FILENAME = "blocknetd.pid";
+static const char* BITCOIN_PID_FILENAME = "scalarisd.pid";
 
 static fs::path GetPidFile()
 {
@@ -213,7 +213,7 @@ void Shutdown(InitInterfaces& interfaces)
     /// for example if the data directory was found to be locked.
     /// Be sure that anything that writes files or flushes caches only does this if the respective
     /// module was initialized.
-    RenameThread("blocknet-shutoff");
+    RenameThread("scalaris-shutoff");
     mempool.AddTransactionsUpdated(1);
 
     // Shutdown xbridge
@@ -422,7 +422,7 @@ void SetupServerArgs()
 #else
     hidden_args.emplace_back("-sysperms");
 #endif
-    gArgs.AddArg("-txindex", "Blocknet requires txindex to support the Proof of Stake protocol.", false, OptionsCategory::OPTIONS);
+    gArgs.AddArg("-txindex", "Scalaris requires txindex to support the Proof of Stake protocol.", false, OptionsCategory::OPTIONS);
     gArgs.AddArg("-lowmemoryload", "Use less memory during initial load. This may result in longer load times, however, may improve loading on memory constrained devices if out of memory errors persist (e.g. Rasp Pi)", false, OptionsCategory::OPTIONS);
 
     gArgs.AddArg("-addnode=<ip>", "Add a node to connect to and attempt to keep the connection open (see the `addnode` RPC command help for more info). This option can be specified multiple times to add multiple nodes.", false, OptionsCategory::CONNECTION);
@@ -595,7 +595,8 @@ std::string LicenseInfo()
     const std::string URL_SOURCE_CODE = "<https://github.com/scalaris-project/scalaris>";
     const std::string URL_WEBSITE = "<https://scalaris.info>";
     const std::string copyrightText = "Copyright (c) 2009-2019 The Bitcoin Core developers\n"
-                                      "Copyright (c) 2014-2020 The Blocknet developers";
+                                      "Copyright (c) 2014-2020 The Blocknet developers\n"
+									  "Copyright (c) 2014-2020 The Scalaris developers";
 
     return copyrightText + "\n" +
            "\n" +
@@ -703,7 +704,7 @@ static void CleanupBlockRevFiles()
 static void ThreadImport(std::vector<fs::path> vImportFiles)
 {
     const CChainParams& chainparams = Params();
-    RenameThread("blocknet-loadblk");
+    RenameThread("scalaris-loadblk");
     ScheduleBatchPriority();
 
     {
@@ -1329,9 +1330,9 @@ bool AppInitMain(InitInterfaces& interfaces)
     // Warn about relative -datadir path.
     if (gArgs.IsArgSet("-datadir") && !fs::path(gArgs.GetArg("-datadir", "")).is_absolute()) {
         LogPrintf("Warning: relative datadir option '%s' specified, which will be interpreted relative to the " /* Continued */
-                  "current working directory '%s'. This is fragile, because if Blocknet is started in the future "
+                  "current working directory '%s'. This is fragile, because if Scalaris is started in the future "
                   "from a different location, it will be unable to locate the current data files. There could "
-                  "also be data loss if Blocknet is started while in a temporary directory.\n",
+                  "also be data loss if Scalaris is started while in a temporary directory.\n",
             gArgs.GetArg("-datadir", ""), fs::current_path().string());
     }
 

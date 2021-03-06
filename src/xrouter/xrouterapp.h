@@ -139,7 +139,7 @@ public:
      * @param count Number of nodes to open connections to
      * @param parameterCount Number of parameters used in the call
      * @param skipNodes avoids connecting to these nodes
-     * @param exrSnodes are selected nodes that do not accept requests on the default blocknet wallet port
+     * @param exrSnodes are selected nodes that do not accept requests on the default scalaris wallet port
      * @param foundCount number of nodes found
      */
     bool openConnections(enum XRouterCommand command, const std::string & service, const uint32_t & count,

@@ -43,9 +43,9 @@ QString BitcoinUnits::longName(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("BLOCK");
-    case mBTC: return QString("mBLOCK");
-    case uBTC: return QString::fromUtf8("µBLOCK (bits)");
+    case BTC: return QString("SCA");
+    case mBTC: return QString("mSCA");
+    case uBTC: return QString::fromUtf8("µSCA (bits)");
     case SAT: return QString("Satoshi (sat)");
     default: return QString("???");
     }
@@ -65,9 +65,9 @@ QString BitcoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("BLOCK");
-    case mBTC: return QString("Milli-BLOCK (1 / 1" THIN_SP_UTF8 "000)");
-    case uBTC: return QString("Micro-BLOCK (bits) (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case BTC: return QString("SCA");
+    case mBTC: return QString("Milli-SCA (1 / 1" THIN_SP_UTF8 "000)");
+    case uBTC: return QString("Micro-SCA (bits) (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     case SAT: return QString("Satoshi (sat) (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     default: return QString("???");
     }
