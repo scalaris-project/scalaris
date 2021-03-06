@@ -24,9 +24,9 @@ RUN apt update \
      g++-8-multilib gcc-8-multilib binutils-gold \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV PROJECTDIR=/opt/blocknetdx/blocknet
+ENV PROJECTDIR=/opt/scalaris-project/scalaris
 ENV BASEPREFIX=$PROJECTDIR/depends
-ENV DISTDIR=/opt/blocknetdx/dist
+ENV DISTDIR=/opt/scalaris-project/dist
 ENV HOST=x86_64-pc-linux-gnu
 
 # Download depends
@@ -52,7 +52,7 @@ RUN mkdir -p $DISTDIR \
   && make install DESTDIR=$DISTDIR \
   && make clean
 
-WORKDIR /opt/blocknetdx/dist
+WORKDIR /opt/scalaris-project/dist
 
 # Port, RPC, Test Port, Test RPC
 EXPOSE 41412 41414 41474 41419

@@ -742,7 +742,7 @@ bool createConf(const boost::filesystem::path & confDir, const bool & skipPlugin
             saveConf(p,
                      "[Main]"                                                                                            + eol +
                      "#! It is highly recommended to setup an Enterprise XRouter Proxy (EXR Proxy):"                     + eol +
-                     "#! https://github.com/blocknetdx/exrproxy"                                                         + eol +
+                     "#! https://github.com/scalaris-project/exrproxy"                                                         + eol +
                      "#! host and port below should point to the exr proxy so that xrouter clients can"                  + eol +
                      "#! query services."                                                                                + eol +
                      ""                                                                                                  + eol +

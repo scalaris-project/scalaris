@@ -317,7 +317,7 @@ bool App::createConf()
         if (!boost::filesystem::exists(p)) {
             saveConf(p,
                 "# For a complete list of configuration files for each supported token"        + eol +
-                "# please visit: https://github.com/blocknetdx/blockchain-configuration-files" + eol +
+                "# please visit: https://github.com/scalaris-project/blockchain-configuration-files" + eol +
                 ""                                                                             + eol +
                 "[Main]"                                                                       + eol +
                 "ExchangeWallets="                                                             + eol +

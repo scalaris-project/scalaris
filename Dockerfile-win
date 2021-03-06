@@ -25,9 +25,9 @@ RUN apt update \
   && update-alternatives --set x86_64-w64-mingw32-g++ /usr/bin/x86_64-w64-mingw32-g++-posix \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV PROJECTDIR=/opt/blocknetdx/blocknet
+ENV PROJECTDIR=/opt/scalaris-project/scalaris
 ENV BASEPREFIX=$PROJECTDIR/depends
-ENV DISTDIR=/opt/blocknetdx/dist
+ENV DISTDIR=/opt/scalaris-project/dist
 ENV HOST=x86_64-w64-mingw32
 
 # Download depends
@@ -55,7 +55,7 @@ RUN mkdir -p $DISTDIR \
   && cp *win64-setup.exe $DISTDIR/bin/blocknet-win64-setup.exe \
   && make clean
 
-WORKDIR /opt/blocknetdx/dist
+WORKDIR /opt/scalaris-project/dist
 
 # Port, RPC, Test Port, Test RPC
 EXPOSE 41412 41414 41474 41419
