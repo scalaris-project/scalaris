@@ -51,7 +51,9 @@ void BlocknetDropdown::showPopup() {
     QComboBox::showPopup();
     QList<QFrame *> widgets = this->findChildren<QFrame*>();
     QWidget *popup = widgets[1];
+    popup->setWindowOpacity(0.7);
     popup->setMinimumWidth(ddW);
+
 }
 
 void BlocknetDropdown::wheelEvent(QWheelEvent *e) {

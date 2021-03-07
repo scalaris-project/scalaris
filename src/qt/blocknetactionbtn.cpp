@@ -25,7 +25,7 @@ void BlocknetActionBtn::paintEvent(QPaintEvent *) {
 
     if (option.state == QStyle::State_Sunken) {
         // draw circle
-        p.setBrush(QBrush(QColor(5, 25, 55)));
+        p.setBrush(QBrush(QColor(0, 0, 0, 30)));
         p.drawEllipse(0, 0, s, s);
         // draw line
         QColor cross1(Qt::white);
@@ -33,14 +33,14 @@ void BlocknetActionBtn::paintEvent(QPaintEvent *) {
     }
     else if (this->underMouse()) {
         // draw circle
-        p.setBrush(QBrush(QColor(55, 71, 92)));
+        p.setBrush(QBrush(QColor(0, 0, 0, 76)));
         p.drawEllipse(0, 0, s, s);
         // draw line
         QColor cross1(Qt::white);
         p.setPen(cross1);
     } 
     else {
-        p.setPen(QColor(116, 178, 254));
+        p.setPen(QColor(255, 255, 255));
     }
     p.drawLine(s/2, s/3, s/2, s - s/3);
     p.drawLine(s/3, s/2, s - s/3, s/2);

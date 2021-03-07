@@ -18,7 +18,7 @@ protected:
 public:
     explicit BlocknetAvatar(QString title = "",
                             qreal w = BGU::spi(40), qreal h = BGU::spi(40),
-                            QColor color1 = QColor(0xFB, 0x7F, 0x70), QColor color2 = QColor(0xF6, 0x50, 0x8A),
+                            QColor color1 = QColor(255 , 0, 0, 76), QColor color2 = QColor(255 , 0, 0, 76),
                             QWidget *parent = nullptr);
 
 Q_SIGNALS:
@@ -39,7 +39,7 @@ class BlocknetAvatarBlue : public BlocknetAvatar
 public:
     explicit BlocknetAvatarBlue(QString title = "",
                             qreal w = BGU::spi(40), qreal h = BGU::spi(40),
-                            QColor color1 = QColor(0x00, 0xC9, 0xFF), QColor color2 = QColor(0x4B, 0xF5, 0xC6),
+                            QColor color1 = QColor(0, 255, 0, 76), QColor color2 = QColor(0, 255, 0, 76),
                             QWidget *parent = nullptr);
 };
 

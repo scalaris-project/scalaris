@@ -96,7 +96,7 @@ void BlocknetArrow::paintEvent(QPaintEvent*) {
     p.lineTo(0, BGU::spi(6));
     p.lineTo(0, 0);
     QPainter painter(this);
-    QColor color; color.setNamedColor("#6F8097");
+    QColor color; color.setNamedColor("#FFFFFF");
     painter.fillPath(p, color);
 }
 

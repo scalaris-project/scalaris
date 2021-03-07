@@ -93,8 +93,8 @@ void BlocknetAddressEditor::addAddress(QString addr) {
     QPainterPath p2;
     p2.addEllipse(sx+pad, h/2-cw/2, cw, cw);
     QLinearGradient grad(0, cw/2, cw, cw/2);
-    grad.setColorAt(0, QColor(0xFB, 0x7F, 0x70));
-    grad.setColorAt(1, QColor(0xF6, 0x50, 0x8A));
+    grad.setColorAt(0, QColor(255, 0, 0, 76));
+    grad.setColorAt(1, QColor(255, 0, 0, 76));
     p.fillPath(p2, grad);
 
     // draw text
