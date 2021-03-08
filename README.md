@@ -7,7 +7,7 @@ Welcome to the Scalaris repository. This repo is for the Scalaris Protocol, a 2n
 
 [Contributors are welcome!](https://github.com/scalaris-project/scalaris/blob/master/CONTRIBUTING.md)
 
-[Website](https://scalaris.info) | [API](https://api.scalaris.info) | [Documentation](https://docs.scalaris.info) | [Discord](https://discord.gg/HKbdGANbZA) | [Telegram](https://t.me/scalaris_project)
+[Website](https://scalaris.info) | [API](https://api.scalaris.info) | [Documentation](https://docs.scalaris.info) | [Discord](https://discord.gg/ZeUMV2kcaQ) | [Telegram](https://t.me/scalaris_project)
 -------------|-------------|-------------|-------------|-------------
 
 Scalaris
