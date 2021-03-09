@@ -32,7 +32,7 @@ Scalaris Specifications:
 ------------------------|--------------------
 Creation Date           | March 5th, 2021
 Release Method          | ITO, AirDrops , PoW at start.
-Proof Type              | Proof of Work (PoW): blocks 0-5000, Proof of Stake (PoS): blocks 5001+
+Proof Type              | Proof of Work (PoW): blocks 0-2000, Proof of Stake (PoS): blocks 2001+
 Algo                    | Quark
 Block Time              | 60 seconds
 Block Reward / Fees     | 1.0 BLOCK awarded to stakers <br>0.01 BLOCK awarded to Service Nodes on DX trades <br>XRouter fees awarded to Service Nodes (customizable)
