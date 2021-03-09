@@ -54,8 +54,8 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "New time New World";
-    const CScript genesisOutputScript = CScript() << ParseHex("04d8c3ec278ca764db37cd5acd52ff8c710711a282d8b9436182bbf8973c9fb7c0d8d2037664811ffb84189fc9f7fec0d04952ce9becfa83fe22ea49c00cf1d27c") << OP_CHECKSIG;
+    const char* pszTimestamp = "Reboot of the world";
+    const CScript genesisOutputScript = CScript() << ParseHex("044c9c944c2c2d4029a95ba961af2744cc04bc9fea1ae52d19275d44dff41b53c2f003af252f86923225cc699b53e26f81e7927e95edc952ec68da1e772a5118ae") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -78,8 +78,8 @@ public:
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.stakingAllowsMinDifficultyBlocks = false;
-        consensus.nRuleChangeActivationThreshold = 6; // 95% of 1440
-        consensus.nMinerConfirmationWindow = 8; // 1 day
+        consensus.nRuleChangeActivationThreshold = 1368; // 95% of 1440
+        consensus.nMinerConfirmationWindow = 1440; // 1 day
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
@@ -105,19 +105,19 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_STAKEP2PKH].nTimeout = Consensus::BIP9Deployment::NO_TIMEOUT;
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x00"); // block 1522597
+        consensus.nMinimumChainWork = uint256S("0x00"); // block 3
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x00"); // block 1522597
+        consensus.defaultAssumeValid = uint256S("0x00"); // block 3
 
         // Last POW block
-        consensus.lastPOWBlock = 151;
+        consensus.lastPOWBlock = 2000;
         consensus.stakeMinAge = 3600;
         consensus.stakingModiferV2Block = 1;
         consensus.coinMaturity = 100;
-        consensus.stakingV05UpgradeTime = 1612580391; // Sep 23 '19 6pm UTC
-        consensus.stakingV06UpgradeTime = 1612580392; // Apr 15, 2020 6pm UTC
-        consensus.stakingV07UpgradeTime = 1612580400; // June 8, 2020 6pm UTC
+        consensus.stakingV05UpgradeTime = 1615321754;
+        consensus.stakingV06UpgradeTime = 1615321854;
+        consensus.stakingV07UpgradeTime = 1615321954;
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -133,10 +133,10 @@ public:
         m_assumed_blockchain_size = 3;
         m_assumed_chain_state_size = 1;
 
-        genesis = CreateGenesisBlock(1612580400, 470216, UintToArith256(consensus.powLimit).GetCompact(), 1, 250 * COIN);
+        genesis = CreateGenesisBlock(1615310763, 2049660, UintToArith256(consensus.powLimit).GetCompact(), 1, 250 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x00000c741d005b1a4837a86f659b772f101249ec52e85186224311c691c2be98"));
-        assert(genesis.hashMerkleRoot == uint256S("0x4bc0a0445eb3d74f4325953b70112b56a6bfcbe07ed3a4ac10139bbf32da4d73"));
+        assert(consensus.hashGenesisBlock == uint256S("0x000003bf95cf7875987b333cc8e49a7c1a83583e5f5039b9af9555a92cb29651"));
+        assert(genesis.hashMerkleRoot == uint256S("0xd3c84af266418396b640a2e42c857bed8e692e8e60ac60dedddd3f2927ce86de"));
 
         // Note that of those which support the service bits prefix, most only support a subset of
         // possible options.
@@ -163,7 +163,7 @@ public:
 
         checkpointData = {
             {
-                {0, uint256S("0x00000c741d005b1a4837a86f659b772f101249ec52e85186224311c691c2be98")},
+                {0, uint256S("0x000003bf95cf7875987b333cc8e49a7c1a83583e5f5039b9af9555a92cb29651")},
             }
         };
         // Assign last checkpoint height, used to estimate initial load time
@@ -173,7 +173,7 @@ public:
         }
 
         chainTxData = ChainTxData{
-            // Data from rpc: getchaintxstats 43200 [block_hash]
+            // Data from rpc: getchaintxstats 3 [block_hash]
             /* nTime    */ 0,
             /* nTxCount */ 0,
             /* dTxRate  */ 0
@@ -184,18 +184,18 @@ public:
         consensus.defaultFallbackFee = CFeeRate(2000);
 
         // Governance
-        consensus.superblock = 200;
-        consensus.proposalCutoff = 20;
-        consensus.votingCutoff = 10;
+        consensus.superblock = 42000;
+        consensus.proposalCutoff = 2000;
+        consensus.votingCutoff = 106;
         consensus.proposalMaxAmount = 30000 * COIN;
         consensus.governanceBlock = 1;
 
         // subsidy func mainnet
         consensus.GetBlockSubsidy = [](const int & blockHeight, const Consensus::Params & consensusParams) {
             CAmount baseReward = 1 * COIN;
-            if (blockHeight == 1)                 return 10000000 * COIN; // from previous mainnet
+            if (blockHeight == 1)                 return 6030000 * COIN; // from previous mainnet
             else if (blockHeight % consensusParams.superblock == 0) { // superblocks
-               if (blockHeight >= 200)         return consensusParams.proposalMaxAmount + baseReward; // phase 2 superblock
+               if (blockHeight >= 42000)         return consensusParams.proposalMaxAmount + baseReward; // phase 2 superblock
                else                               return 1  * COIN + baseReward; // phase 1 superblock
             }
             else
@@ -236,18 +236,18 @@ public:
 
         // Deployment of SegWit (BIP141, BIP143, and BIP147)
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1573850059; // November 15, 2019
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1573936459; // November 16, 2019
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = Consensus::BIP9Deployment::ALWAYS_ACTIVE;
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = Consensus::BIP9Deployment::NO_TIMEOUT;
 
         // Deployment of staker network fees
-        consensus.vDeployments[Consensus::DEPLOYMENT_NETWORKFEES].bit = 2;
-        consensus.vDeployments[Consensus::DEPLOYMENT_NETWORKFEES].nStartTime = 1559692800; // June 5, 2019
-        consensus.vDeployments[Consensus::DEPLOYMENT_NETWORKFEES].nTimeout = 1577750400; // December 31, 2019
+        consensus.vDeployments[Consensus::DEPLOYMENT_NETWORKFEES].bit = 25;
+        consensus.vDeployments[Consensus::DEPLOYMENT_NETWORKFEES].nStartTime = Consensus::BIP9Deployment::ALWAYS_ACTIVE;
+        consensus.vDeployments[Consensus::DEPLOYMENT_NETWORKFEES].nTimeout = Consensus::BIP9Deployment::NO_TIMEOUT;
 
         // Deployment of staker p2pkh support
-        consensus.vDeployments[Consensus::DEPLOYMENT_STAKEP2PKH].bit = 3;
-        consensus.vDeployments[Consensus::DEPLOYMENT_STAKEP2PKH].nStartTime = 1559692800; // June 5, 2019
-        consensus.vDeployments[Consensus::DEPLOYMENT_STAKEP2PKH].nTimeout = 1577750400; // December 31, 2019
+        consensus.vDeployments[Consensus::DEPLOYMENT_STAKEP2PKH].bit = 24;
+        consensus.vDeployments[Consensus::DEPLOYMENT_STAKEP2PKH].nStartTime = Consensus::BIP9Deployment::ALWAYS_ACTIVE;
+        consensus.vDeployments[Consensus::DEPLOYMENT_STAKEP2PKH].nTimeout = Consensus::BIP9Deployment::NO_TIMEOUT;
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
@@ -272,10 +272,10 @@ public:
         m_assumed_blockchain_size = 1;
         m_assumed_chain_state_size = 1;
 
-        genesis = CreateGenesisBlock(1612580400, 1, UintToArith256(consensus.powLimit).GetCompact(), 1, 250 * COIN);
+        genesis = CreateGenesisBlock(1615310763, 2, UintToArith256(consensus.powLimit).GetCompact(), 1, 250 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x33ddea77261fb53b6af1b7a1e76949588634032482da7237f5c59a84fe54cb86"));
-        assert(genesis.hashMerkleRoot == uint256S("0x4bc0a0445eb3d74f4325953b70112b56a6bfcbe07ed3a4ac10139bbf32da4d73"));
+        assert(consensus.hashGenesisBlock == uint256S("0x03f78215330128a1ffe72d946f25288fc0117e096861c94843149eebd02b6c6c"));
+        assert(genesis.hashMerkleRoot == uint256S("0xd3c84af266418396b640a2e42c857bed8e692e8e60ac60dedddd3f2927ce86de"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -299,7 +299,7 @@ public:
 
         checkpointData = {
             {
-                {0, uint256S("0x33ddea77261fb53b6af1b7a1e76949588634032482da7237f5c59a84fe54cb86")},
+                {0, uint256S("0x03f78215330128a1ffe72d946f25288fc0117e096861c94843149eebd02b6c6c")},
             }
         };
         // Assign last checkpoint height, used to estimate initial load time
@@ -395,10 +395,10 @@ public:
 
         UpdateVersionBitsParametersFromArgs(args);
 
-        genesis = CreateGenesisBlock(1612580400, 3, UintToArith256(consensus.powLimit).GetCompact(), 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1615310763, 6, UintToArith256(consensus.powLimit).GetCompact(), 1, 250 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x68fba143e47c72475f0b648a1a6e7fe6421b02da7375156fa5ecb387f943201b"));
-        assert(genesis.hashMerkleRoot == uint256S("0x668d3ec747705adc7a17cf5e59dcbc5708f108e8856bfd6fb28d1064965b62e2"));
+        assert(consensus.hashGenesisBlock == uint256S("0x60e52919d6d3d1131f1a7389114013ddd8c39aa746a121a12096aab0d7b1660c"));
+        assert(genesis.hashMerkleRoot == uint256S("0xd3c84af266418396b640a2e42c857bed8e692e8e60ac60dedddd3f2927ce86de"));
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
@@ -409,7 +409,7 @@ public:
 
         checkpointData = {
             {
-                {0, uint256S("0x68fba143e47c72475f0b648a1a6e7fe6421b02da7375156fa5ecb387f943201b")},
+                {0, uint256S("0x60e52919d6d3d1131f1a7389114013ddd8c39aa746a121a12096aab0d7b1660c")},
             }
         };
 

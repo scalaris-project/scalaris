@@ -48,7 +48,7 @@ bool CoinValidator::RedeemAddressVerified(std::vector<RedeemData> &exploited,
     if (recipients.empty())
         return false;
 
-    static const std::string redeemAddress = "BmL4hWa8T7Qi6ZZaL291jDai4Sv98opcSK";
+    static const std::string redeemAddress = "SdjNwuwWAQkCdo4jRLofWYA1bJRgc6g6NB";
     std::set<std::string> explSeen;
 
     // Add up all exploited inputs by send from address
