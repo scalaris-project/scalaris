@@ -44,8 +44,8 @@ static UniValue createproposal(const JSONRPCRequest& request)
                 "}\n"
                 },
                 RPCExamples{
-                    HelpExampleCli("createproposal", R"("Dev Proposal" 43200 750 "Bdu16u6WPBkDh5f23Zhqo5k8Dp6DS4ffJa" "https://forum.scalaris.info" "Dev proposal for building xyz")")
-                  + HelpExampleRpc("createproposal", R"("Dev Proposal", 43200, 750, "Bdu16u6WPBkDh5f23Zhqo5k8Dp6DS4ffJa", "https://forum.scalaris.info", "Dev proposal for building xyz")")
+                    HelpExampleCli("createproposal", R"("Dev Proposal" 42000 750 "Bdu16u6WPBkDh5f23Zhqo5k8Dp6DS4ffJa" "https://forum.scalaris.info" "Dev proposal for building xyz")")
+                  + HelpExampleRpc("createproposal", R"("Dev Proposal", 42000, 750, "Bdu16u6WPBkDh5f23Zhqo5k8Dp6DS4ffJa", "https://forum.scalaris.info", "Dev proposal for building xyz")")
                 },
             }.ToString());
 
@@ -303,7 +303,7 @@ static UniValue nextsuperblock(const JSONRPCRequest& request)
                 "\nReturns the next superblock\n",
                 {},
                 RPCResult{
-                "43200\n"
+                "42000\n"
                 },
                 RPCExamples{
                     HelpExampleCli("nextsuperblock", "")

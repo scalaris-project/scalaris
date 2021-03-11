@@ -2685,7 +2685,7 @@ UniValue gettradingdata(const JSONRPCRequest& request)
                 "pulled from on-chain history so pulling a large amount of blocks will "
                 "result in longer response times.\n",
                 {
-                    {"blocks", RPCArg::Type::NUM, "43200", "The number of blocks to return trade records for (60s block time)."},
+                    {"blocks", RPCArg::Type::NUM, "42000", "The number of blocks to return trade records for (60s block time)."},
                     {"errors", RPCArg::Type::BOOL, "false", "show errors"},
                 },
                 RPCResult{
@@ -2711,7 +2711,7 @@ UniValue gettradingdata(const JSONRPCRequest& request)
             }.ToString());
     Value js; json_spirit::read_string(request.params.write(), js); Array params = js.get_array();
 
-    uint32_t countOfBlocks = 43200;
+    uint32_t countOfBlocks = 42000;
     bool showErrors = false;
     if (params.size() >= 1) {
         if (params.size() == 2) {
@@ -2785,7 +2785,7 @@ UniValue dxGetTradingData(const JSONRPCRequest& request)
                 "pulled from on-chain history so pulling a large amount of blocks will "
                 "result in longer response times.\n",
                 {
-                    {"blocks", RPCArg::Type::NUM, "43200", "The number of blocks to return trade records for (60s block time)."},
+                    {"blocks", RPCArg::Type::NUM, "42000", "The number of blocks to return trade records for (60s block time)."},
                     {"errors", RPCArg::Type::BOOL, "false", "Shows an error if an error is detected."},
                 },
                 RPCResult{
@@ -2831,15 +2831,15 @@ UniValue dxGetTradingData(const JSONRPCRequest& request)
                 RPCExamples{
                     HelpExampleCli("dxGetTradingData", "")
                   + HelpExampleRpc("dxGetTradingData", "")
-                  + HelpExampleCli("dxGetTradingData", "43200")
-                  + HelpExampleRpc("dxGetTradingData", "43200")
-                  + HelpExampleCli("dxGetTradingData", "43200 true")
-                  + HelpExampleRpc("dxGetTradingData", "43200, true")
+                  + HelpExampleCli("dxGetTradingData", "42000")
+                  + HelpExampleRpc("dxGetTradingData", "42000")
+                  + HelpExampleCli("dxGetTradingData", "42000 true")
+                  + HelpExampleRpc("dxGetTradingData", "42000, true")
                 },
             }.ToString());
     Value js; json_spirit::read_string(request.params.write(), js); Array params = js.get_array();
 
-    uint32_t countOfBlocks = 43200;
+    uint32_t countOfBlocks = 42000;
     bool showErrors = false;
     if (params.size() >= 1) {
         if (params.size() == 2) {

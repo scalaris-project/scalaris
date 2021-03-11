@@ -105,10 +105,10 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_STAKEP2PKH].nTimeout = Consensus::BIP9Deployment::NO_TIMEOUT;
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x00"); // block 3
+        consensus.nMinimumChainWork = uint256S("000000000000000000000000000000000000000000000000000000a20aae6618"); // block 2103
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x00"); // block 3
+        consensus.defaultAssumeValid = uint256S("0xd5b6cc390535cf9c8925057af687ce845120286f5560fdb8d1a3cdde871b611f"); // block 2103
 
         // Last POW block
         consensus.lastPOWBlock = 2000;
@@ -164,6 +164,7 @@ public:
         checkpointData = {
             {
                 {0, uint256S("0x000003bf95cf7875987b333cc8e49a7c1a83583e5f5039b9af9555a92cb29651")},
+                {2103, uint256S("0xd5b6cc390535cf9c8925057af687ce845120286f5560fdb8d1a3cdde871b611f")},
             }
         };
         // Assign last checkpoint height, used to estimate initial load time
@@ -173,10 +174,10 @@ public:
         }
 
         chainTxData = ChainTxData{
-            // Data from rpc: getchaintxstats 3 [block_hash]
-            /* nTime    */ 0,
-            /* nTxCount */ 0,
-            /* dTxRate  */ 0
+            // Data from rpc: getchaintxstats 2102 d5b6cc390535cf9c8925057af687ce845120286f5560fdb8d1a3cdde871b611f
+            /* nTime    */ 1615434912,
+            /* nTxCount */ 2226,
+            /* dTxRate  */ 0.01798566969123522
         };
 
         /* enable fallback fee on mainnet */
