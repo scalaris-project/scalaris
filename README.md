@@ -80,7 +80,9 @@ information or see https://opensource.org/licenses/MIT.
 
 The MIT License (MIT)
 
-Copyright (c) 2020-2021 The Scalaris Developers
+Copyright (c) 2009-2019 The Bitcoin Core developers<br>
+Copyright (c) 2014-2020 Blocknet developers<br>
+Copyright (c) 2020-2021 Scalaris developers<br>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
