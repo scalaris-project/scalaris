@@ -33,7 +33,7 @@ ENV HOST=x86_64-w64-mingw32
 # Download depends
 RUN mkdir -p $PROJECTDIR \
   && cd $PROJECTDIR \
-  && wget -nv https://s3.us-east-2.amazonaws.com/devbuilds.scalarisprotocol.com/depends/depends-v4.2.0-win-bionic.tar.gz \
+  && wget -nv https://s3.us-east-2.amazonaws.com/devbuilds.blocknetprotocol.com/depends/depends-v4.2.0-win-bionic.tar.gz \
   && [ "$(printf '1a10012c4fd13cc1eb671ac5a3919cd42c86b9ff90f875ce8fa153a77871170c depends-v4.2.0-win-bionic.tar.gz' | sha256sum -c)" = "depends-v4.2.0-win-bionic.tar.gz: OK" ] || $(echo "depends checksum failed"; exit 1)
 
 # Copy source files

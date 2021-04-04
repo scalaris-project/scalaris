@@ -43,29 +43,29 @@ bool ServiceNodeSetupFixtureSetup{false};
 struct ServiceNodeSetupFixture {
     explicit ServiceNodeSetupFixture() {
         if (ServiceNodeSetupFixtureSetup) return; ServiceNodeSetupFixtureSetup = true;
-        chain_1000_50();
-        chain_1250_50();
+        chain_500_50();
+        chain_625_50();
     }
-    void chain_1000_50() {
+    void chain_500_50() {
         auto pos = std::make_shared<TestChainPoS>(false);
         auto *params = (CChainParams*)&Params();
         params->consensus.GetBlockSubsidy = [](const int & blockHeight, const Consensus::Params & consensusParams) {
             if (blockHeight <= consensusParams.lastPOWBlock)
-                return 1000 * COIN;
+                return 500 * COIN;
             return 50 * COIN;
         };
-        pos->Init("1000,50");
+        pos->Init("500,50");
         pos.reset();
     }
-    void chain_1250_50() {
+    void chain_625_50() {
         auto pos = std::make_shared<TestChainPoS>(false);
         auto *params = (CChainParams*)&Params();
         params->consensus.GetBlockSubsidy = [](const int & blockHeight, const Consensus::Params & consensusParams) {
             if (blockHeight <= consensusParams.lastPOWBlock)
-                return 1250 * COIN;
+                return 625 * COIN;
             return 50 * COIN;
         };
-        pos->Init("1250,50");
+        pos->Init("625,50");
         pos.reset();
     }
 };
@@ -80,10 +80,10 @@ BOOST_AUTO_TEST_CASE(servicenode_tests_isvalid)
     auto *params = (CChainParams*)&Params();
     params->consensus.GetBlockSubsidy = [](const int & blockHeight, const Consensus::Params & consensusParams) {
         if (blockHeight <= consensusParams.lastPOWBlock)
-            return 1000 * COIN;
+            return 500 * COIN;
         return 50 * COIN;
     };
-    pos.Init("1000,50");
+    pos.Init("500,50");
 
     const auto snodePubKey = pos.coinbaseKey.GetPubKey();
     const auto tier = sn::ServiceNode::Tier::SPV;
@@ -212,10 +212,10 @@ BOOST_AUTO_TEST_CASE(servicenode_tests_spent_collateral)
     auto *params = (CChainParams*)&Params();
     params->consensus.GetBlockSubsidy = [](const int & blockHeight, const Consensus::Params & consensusParams) {
         if (blockHeight <= consensusParams.lastPOWBlock)
-            return 1000 * COIN;
+            return 500 * COIN;
         return 50 * COIN;
     };
-    pos.Init("1000,50");
+    pos.Init("500,50");
     pos.StakeBlocks(5), SyncWithValidationInterfaceQueue();
 
     CKey key; key.MakeNewKey(true);
@@ -230,7 +230,7 @@ BOOST_AUTO_TEST_CASE(servicenode_tests_spent_collateral)
         std::vector<COutput> coins;
         {
             LOCK2(cs_main, pos.wallet->cs_wallet);
-            pos.wallet->AvailableCoins(*pos.locked_chain, coins, true, nullptr, 500 * COIN);
+            pos.wallet->AvailableCoins(*pos.locked_chain, coins, true, nullptr, 250 * COIN);
         }
         // Spend the first available input in "coins"
         auto c = coins[0];
@@ -282,7 +282,7 @@ BOOST_AUTO_TEST_CASE(servicenode_tests_spent_collateral)
         std::vector<COutput> coins;
         {
             LOCK2(cs_main, pos.wallet->cs_wallet);
-            pos.wallet->AvailableCoins(*pos.locked_chain, coins, true, nullptr, 500 * COIN);
+            pos.wallet->AvailableCoins(*pos.locked_chain, coins, true, nullptr, 250 * COIN);
         }
         // Spend one of the collateral inputs (spend the 2nd coinbase input, b/c first was spent above)
         COutput c = coins[0];
@@ -329,7 +329,7 @@ BOOST_AUTO_TEST_CASE(servicenode_tests_spent_collateral)
         std::vector<COutput> coins;
         {
             LOCK2(cs_main, pos.wallet->cs_wallet);
-            pos.wallet->AvailableCoins(*pos.locked_chain, coins, true, nullptr, 500 * COIN);
+            pos.wallet->AvailableCoins(*pos.locked_chain, coins, true, nullptr, 250 * COIN);
         }
         CAmount totalAmount{0};
         std::vector<COutPoint> collateral;
@@ -395,11 +395,11 @@ BOOST_AUTO_TEST_CASE(servicenode_tests_reregister_onspend)
     auto *params = (CChainParams*)&Params();
     params->consensus.GetBlockSubsidy = [](const int & blockHeight, const Consensus::Params & consensusParams) {
         if (blockHeight <= consensusParams.lastPOWBlock)
-            return 1000 * COIN;
+            return 500 * COIN;
         return 50 * COIN;
     };
     params->consensus.coinMaturity = 10;
-    pos.Init("1000,50");
+    pos.Init("500,50");
     sn::ServiceNodeMgr::instance().reset();
     RegisterValidationInterface(&sn::ServiceNodeMgr::instance());
 
@@ -423,7 +423,7 @@ BOOST_AUTO_TEST_CASE(servicenode_tests_reregister_onspend)
         std::vector<COutput> coins;
         {
             LOCK2(cs_main, pos.wallet->cs_wallet);
-            pos.wallet->AvailableCoins(*pos.locked_chain, coins, true, nullptr, 1000 * COIN);
+            pos.wallet->AvailableCoins(*pos.locked_chain, coins, true, nullptr, 500 * COIN);
         }
         std::vector<COutPoint> collateral;
         CAmount collateralTotal{0};
@@ -508,11 +508,11 @@ BOOST_AUTO_TEST_CASE(servicenode_tests_valid_onreorg)
     auto *params = (CChainParams*)&Params();
     params->consensus.GetBlockSubsidy = [](const int & blockHeight, const Consensus::Params & consensusParams) {
         if (blockHeight <= consensusParams.lastPOWBlock)
-            return 1000 * COIN;
+            return 500 * COIN;
         return 50 * COIN;
     };
     params->consensus.coinMaturity = 10;
-    pos.Init("1000,50");
+    pos.Init("500,50");
     sn::ServiceNodeMgr::instance().reset();
     RegisterValidationInterface(&sn::ServiceNodeMgr::instance());
 
@@ -536,7 +536,7 @@ BOOST_AUTO_TEST_CASE(servicenode_tests_valid_onreorg)
         std::vector<COutput> coins;
         {
             LOCK2(cs_main, pos.wallet->cs_wallet);
-            pos.wallet->AvailableCoins(*pos.locked_chain, coins, true, nullptr, 1000 * COIN);
+            pos.wallet->AvailableCoins(*pos.locked_chain, coins, true, nullptr, 500 * COIN);
         }
         std::vector<COutPoint> collateral;
         CAmount collateralTotal{0};
@@ -633,11 +633,11 @@ BOOST_AUTO_TEST_CASE(servicenode_tests_immature_collateral)
     auto *params = (CChainParams*)&Params();
     params->consensus.GetBlockSubsidy = [](const int & blockHeight, const Consensus::Params & consensusParams) {
         if (blockHeight <= consensusParams.lastPOWBlock)
-            return 1000 * COIN;
+            return 500 * COIN;
         return 50 * COIN;
     };
     params->consensus.coinMaturity = 10;
-    pos.Init("1000,50");
+    pos.Init("500,50");
 
     gArgs.SoftSetBoolArg("-servicenode", true);
 
@@ -663,7 +663,7 @@ BOOST_AUTO_TEST_CASE(servicenode_tests_immature_collateral)
         std::vector<COutput> coins;
         {
             LOCK2(cs_main, pos.wallet->cs_wallet);
-            pos.wallet->AvailableCoins(*pos.locked_chain, coins, true, nullptr, 1000 * COIN);
+            pos.wallet->AvailableCoins(*pos.locked_chain, coins, true, nullptr, 500 * COIN);
         }
 
         std::vector<COutPoint> collateral;
@@ -758,11 +758,11 @@ BOOST_AUTO_TEST_CASE(servicenode_tests_registration_pings)
     auto *params = (CChainParams*)&Params();
     params->consensus.GetBlockSubsidy = [](const int & blockHeight, const Consensus::Params & consensusParams) {
         if (blockHeight <= consensusParams.lastPOWBlock)
-            return 1000 * COIN;
+            return 500 * COIN;
         return 50 * COIN;
     };
     params->consensus.coinMaturity = 10;
-    pos.Init("1000,50");
+    pos.Init("500,50");
 
     CTxDestination dest(pos.coinbaseKey.GetPubKey().GetID());
     auto & smgr = sn::ServiceNodeMgr::instance();
@@ -1002,10 +1002,10 @@ BOOST_AUTO_TEST_CASE(servicenode_tests_misc_checks)
     auto *params = (CChainParams*)&Params();
     params->consensus.GetBlockSubsidy = [](const int & blockHeight, const Consensus::Params & consensusParams) {
         if (blockHeight <= consensusParams.lastPOWBlock)
-            return 1000 * COIN;
+            return 500 * COIN;
         return 50 * COIN;
     };
-    pos.Init("1000,50");
+    pos.Init("500,50");
 
     auto & smgr = sn::ServiceNodeMgr::instance();
     CKey key; key.MakeNewKey(true);
@@ -1014,7 +1014,7 @@ BOOST_AUTO_TEST_CASE(servicenode_tests_misc_checks)
     std::vector<COutput> coins;
     {
         LOCK2(cs_main, pos.wallet->cs_wallet);
-        pos.wallet->AvailableCoins(*pos.locked_chain, coins, true, nullptr, 500 * COIN);
+        pos.wallet->AvailableCoins(*pos.locked_chain, coins, true, nullptr, 250 * COIN);
     }
     // sort largest coins first
     std::sort(coins.begin(), coins.end(), [](const COutput & a, const COutput & b) {
@@ -1265,10 +1265,10 @@ BOOST_AUTO_TEST_CASE(servicenode_tests_rpc)
     auto *params = (CChainParams*)&Params();
     params->consensus.GetBlockSubsidy = [](const int & blockHeight, const Consensus::Params & consensusParams) {
         if (blockHeight <= consensusParams.lastPOWBlock)
-            return 1250 * COIN;
+            return 625 * COIN;
         return 50 * COIN;
     };
-    pos.Init("1250,50");
+    pos.Init("625,50");
 
     auto & smgr = sn::ServiceNodeMgr::instance();
     const auto snodePubKey = pos.coinbaseKey.GetPubKey();
@@ -1655,12 +1655,12 @@ BOOST_AUTO_TEST_CASE(servicenode_tests_rpc)
 
             // Should fail on bad input size
             rpcparams = UniValue(UniValue::VARR);
-            rpcparams.push_backV({ EncodeDestination(dest), 1, -1000 });
+            rpcparams.push_backV({ EncodeDestination(dest), 1, -500 });
             BOOST_CHECK_THROW(CallRPC2("servicenodecreateinputs", rpcparams), std::runtime_error);
 
             // Should fail on bad input size
             rpcparams = UniValue(UniValue::VARR);
-            rpcparams.push_backV({ EncodeDestination(dest), 1, 1000.123 });
+            rpcparams.push_backV({ EncodeDestination(dest), 1, 500.123 });
             BOOST_CHECK_THROW(CallRPC2("servicenodecreateinputs", rpcparams), std::runtime_error);
         }
 

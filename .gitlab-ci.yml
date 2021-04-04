@@ -19,7 +19,7 @@ build_linux:
     - "make install DESTDIR=\"$DISTDIR\""
     - "make clean"
   artifacts:
-    name: "blocknet-$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA-linux"
+    name: "scalaris-$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA-linux"
     expire_in: 3 weeks
     paths:
       - dist/bin
@@ -44,10 +44,10 @@ build_win:
     - "make -j10"
     - "make deploy"
     - "make install DESTDIR=\"$DISTDIR\""
-    - "cp *win64-setup.exe $DISTDIR/bin/blocknet-win64-setup.exe"
+    - "cp *win64-setup.exe $DISTDIR/bin/scalaris-win64-setup.exe"
     - "make clean"
   artifacts:
-    name: "blocknet-$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA-win"
+    name: "scalaris-$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA-win"
     expire_in: 3 weeks
     paths:
       - dist/bin
@@ -70,11 +70,11 @@ build_mac:
     - "make clean"
     - "echo \"Building with cores: 10\""
     - "make -j10"
-    - "mkdir -p $DISTDIR/bin && llvm-dsymutil-6.0 src/qt/blocknet-qt -o $DISTDIR/bin/blocknet-qt.dSYM"
+    - "mkdir -p $DISTDIR/bin && llvm-dsymutil-6.0 src/qt/scalaris-qt -o $DISTDIR/bin/scalaris-qt.dSYM"
     - "make install DESTDIR=\"$DISTDIR\""
     - "make clean"
   artifacts:
-    name: "blocknet-$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA-mac"
+    name: "scalaris-$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA-mac"
     expire_in: 3 weeks
     paths:
       - dist/bin
@@ -83,25 +83,25 @@ test_artifacts:
   stage: test
   image: ubuntu:bionic
   script:
-    - "[ -f \"dist/bin/blocknet-cli\" ];"
-    - "[ -f \"dist/bin/blocknetd\" ];"
-    - "[ -f \"dist/bin/blocknet-qt\" ];"
-    - "[ -f \"dist/bin/blocknet-tx\" ];"
-    - "[ -f \"dist/bin/blocknet-wallet\" ];"
-    - "[ -f \"dist/bin/test_blocknet\" ];"
-    - "[ -f \"dist/bin/test_blocknet-qt\" ];"
-    - "[ -f \"dist/bin/blocknet-cli.exe\" ];"
-    - "[ -f \"dist/bin/blocknetd.exe\" ];"
-    - "[ -f \"dist/bin/blocknet-qt.exe\" ];"
-    - "[ -f \"dist/bin/blocknet-tx.exe\" ];"
-    - "[ -f \"dist/bin/blocknet-wallet.exe\" ];"
-    - "[ -f \"dist/bin/test_blocknet.exe\" ];"
-    - "[ -f \"dist/bin/blocknet-win64-setup.exe\" ];"
-    - "[ -f \"dist/bin/blocknet-cli\" ];"
-    - "[ -f \"dist/bin/blocknetd\" ];"
-    - "[ -f \"dist/bin/blocknet-qt\" ];"
-    - "[ -d \"dist/bin/blocknet-qt.dSYM\" ];"
-    - "[ -f \"dist/bin/blocknet-tx\" ];"
-    - "[ -f \"dist/bin/blocknet-wallet\" ];"
-    - "[ -f \"dist/bin/test_blocknet\" ];"
-    - "[ -f \"dist/bin/test_blocknet-qt\" ];"
+    - "[ -f \"dist/bin/scalaris-cli\" ];"
+    - "[ -f \"dist/bin/scalarisd\" ];"
+    - "[ -f \"dist/bin/scalaris-qt\" ];"
+    - "[ -f \"dist/bin/scalaris-tx\" ];"
+    - "[ -f \"dist/bin/scalaris-wallet\" ];"
+    - "[ -f \"dist/bin/test_scalaris\" ];"
+    - "[ -f \"dist/bin/test_scalaris-qt\" ];"
+    - "[ -f \"dist/bin/scalaris-cli.exe\" ];"
+    - "[ -f \"dist/bin/scalarisd.exe\" ];"
+    - "[ -f \"dist/bin/scalaris-qt.exe\" ];"
+    - "[ -f \"dist/bin/scalaris-tx.exe\" ];"
+    - "[ -f \"dist/bin/scalaris-wallet.exe\" ];"
+    - "[ -f \"dist/bin/test_scalaris.exe\" ];"
+    - "[ -f \"dist/bin/scalaris-win64-setup.exe\" ];"
+    - "[ -f \"dist/bin/scalaris-cli\" ];"
+    - "[ -f \"dist/bin/scalarisd\" ];"
+    - "[ -f \"dist/bin/scalaris-qt\" ];"
+    - "[ -d \"dist/bin/scalaris-qt.dSYM\" ];"
+    - "[ -f \"dist/bin/scalaris-tx\" ];"
+    - "[ -f \"dist/bin/scalaris-wallet\" ];"
+    - "[ -f \"dist/bin/test_scalaris\" ];"
+    - "[ -f \"dist/bin/test_scalaris-qt\" ];"

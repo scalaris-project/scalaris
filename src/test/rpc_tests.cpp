@@ -111,7 +111,7 @@ BOOST_AUTO_TEST_CASE(rpc_rawsign)
       "\"vout\":1,\"scriptPubKey\":\"a914cc8acfdb6f6525ebbd71a1594aae1ddb605a759587\","
       "\"redeemScript\":\"512102aea4b28cf3d57731f948802a22cc5cd3a8307af6a61e5e10fc649c319c56c9ef2103eca0a7472cc1b6ab8ec43d85306913052b0d9e7b145c691af722d0c3c16b6a5352ae\"}]";
     r = CallRPC(std::string("createrawtransaction ")+prevout+" "+
-      "{\"BjbjNWgeTkeNneNq9m8Ms4jiKrcBNcozo7\":11}");
+      "{\"SUmau8m2dEFBiVf2kyUXhzRDqZLvFMnNj2\":11}");
     std::string notsigned = r.get_str();
     std::string privkey1 = "\"Pt2mYgz9enE3LgduTRANdUdhs6rqg2o4x2HneKhsDimvDZNHfYmn\"";
     std::string privkey2 = "\"PoRQZyDSkdJNSYB2kV4Jyi47enMUyvTDGfyb9BC99MncisMsV8eC\"";
